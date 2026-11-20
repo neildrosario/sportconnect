@@ -425,9 +425,40 @@ function initEarlyAccessForm() {
 }
 
 /* ==========================================================================
+   Theme Switcher (Light Default + Dark Athletic Toggle)
+   ========================================================================== */
+function initThemeToggle() {
+  const btn = document.getElementById('theme-toggle-btn');
+  const meta = document.getElementById('theme-color-meta');
+  if (!btn) return;
+
+  function applyTheme(theme) {
+    const isDark = theme === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    btn.setAttribute('aria-pressed', String(isDark));
+    btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+    if (meta) meta.setAttribute('content', isDark ? '#050911' : '#f8fafc');
+    try {
+      localStorage.setItem('sportconnect-theme', isDark ? 'dark' : 'light');
+    } catch {}
+  }
+
+  // Sync button state with initial attribute
+  const initial = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  applyTheme(initial);
+
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+}
+
+/* ==========================================================================
    Bootstrap
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
   // Bind all main nav triggers
   document.querySelectorAll('[data-nav-tab]').forEach((el) => {
     el.addEventListener('click', () => {

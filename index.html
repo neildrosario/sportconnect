@@ -1,9 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#050911">
+  <meta id="theme-color-meta" name="theme-color" content="#f8fafc">
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('sportconnect-theme');
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          var meta = document.getElementById('theme-color-meta');
+          if (meta) meta.setAttribute('content', '#050911');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <meta name="description" content="SportConnect is a modular sports-technology platform delivering lightweight, hyper-focused mobile apps unified under one white-labeled enterprise architecture.">
   <meta property="og:title" content="SportConnect | Modular Sports-Technology Platform">
   <meta property="og:description" content="Six purpose-built sports apps connected by a single zero-trust, white-labeled enterprise architecture.">
@@ -71,10 +83,16 @@
         <button type="button" class="desktop-nav-btn" data-nav-tab="access">Early Access</button>
       </nav>
 
-      <button type="button" class="header-cta" data-jump-tab="access">
-        <span>Get Access</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </button>
+      <div class="header-actions">
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <button type="button" class="header-cta" data-jump-tab="access">
+          <span>Get Access</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+      </div>
     </div>
 
     <!-- Products Horizontal Sub-Nav (Visible on App Suite Tab) -->
@@ -537,7 +555,7 @@
                 <div class="phone-carousel hide-scrollbar" aria-label="Triathlon Planner app screens">
                   <div class="phone-slide">
                     <div class="slide-kicker">1. Multi-Leg Course Map</div>
-                    <div class="mini-card" style="padding: 0; overflow: hidden; height: 170px; position: relative; background: #0a1729;">
+                    <div class="mini-card mini-card--map">
                       <svg viewBox="0 0 260 170" width="100%" height="100%" aria-hidden="true">
                         <defs>
                           <linearGradient id="routeGrad" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -670,7 +688,7 @@
 
                   <div class="phone-slide">
                     <div class="slide-kicker">2. Mid-Quarter Swap Alert</div>
-                    <div class="mini-card" style="text-align: center; border-color: rgba(251, 146, 60, 0.45); background: linear-gradient(180deg, rgba(251, 146, 60, 0.14), rgba(15, 23, 42, 0.92));">
+                    <div class="mini-card mini-card--swap">
                       <div class="mini-badge mini-badge--amber" style="margin-bottom: 0.5rem;">07:30 • MID-QUARTER</div>
                       <div class="mini-title" style="font-size: 1.05rem;">50/50 Swap Required</div>
                       <div class="mini-sub" style="margin-top: 0.35rem;">Sub ON: Mia, Sam &nbsp;|&nbsp; Sub OFF: Leo, Finn</div>
@@ -859,14 +877,14 @@
                         <div><div class="mini-title">High-Temp Sauna (92°C)</div><div class="mini-sub">Tap to log +5 min round</div></div>
                         <div id="sauna-time" class="mini-title tabular-nums" style="color: var(--accent-recovery);">15m 00s</div>
                       </div>
-                      <button type="button" id="log-sauna-btn" class="mini-action-btn" style="margin-top: 0.55rem; --app-accent: #fb7185; color: #fff;">+ Log 5m Sauna</button>
+                      <button type="button" id="log-sauna-btn" class="mini-action-btn" style="margin-top: 0.55rem; --app-accent: #e11d48; color: #fff;">+ Log 5m Sauna</button>
                     </div>
                     <div class="mini-card" style="border-color: rgba(34, 211, 238, 0.35);">
                       <div class="mini-row">
                         <div><div class="mini-title">Ice Bath Plunge (6°C)</div><div class="mini-sub">Tap to log +30s immersion</div></div>
                         <div id="ice-time" class="mini-title tabular-nums" style="color: var(--brand-cyan);">03m 30s</div>
                       </div>
-                      <button type="button" id="log-ice-btn" class="mini-action-btn" style="margin-top: 0.55rem; --app-accent: #22d3ee;">+ Log 30s Plunge</button>
+                      <button type="button" id="log-ice-btn" class="mini-action-btn" style="margin-top: 0.55rem; --app-accent: #0891b2; color: #fff;">+ Log 30s Plunge</button>
                     </div>
                   </div>
 
