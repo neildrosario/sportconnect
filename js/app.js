@@ -336,30 +336,138 @@ function initRecoveryDemo() {
    ========================================================================== */
 function initCommercialDemos() {
   const themes = {
-    default: { primary: '#22d3ee', secondary: '#10b981', code: 'SC', club: 'SportConnect Native', sub: 'Default Enterprise Theme' },
-    rovers: { primary: '#10b981', secondary: '#a3e635', code: 'ER', club: 'Emerald Rovers FC', sub: 'Custom Crest & App Store Bundle' },
-    royal: { primary: '#3b82f6', secondary: '#60a5fa', code: 'RA', club: 'Royal Athletic Union', sub: 'White-Label Federation App' },
-    crimson: { primary: '#f43f5e', secondary: '#fb923c', code: 'CU', club: 'Crimson United AC', sub: 'Zero SportConnect Branding' },
+    default: {
+      primary: '#0891b2',
+      secondary: '#10b981',
+      club: 'SportConnect Native',
+      sub: 'Default Enterprise Theme • com.sportconnect.app',
+      cta: 'Member App Live',
+      storeName: 'SportConnect Pro',
+      pushCopy: 'Squad sheet published for Sat 14:00',
+      sponsorCopy: 'Official Kit Partner Banner Active',
+      logoSvg: `
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="wlLgSC" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0891b2"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs>
+          <rect width="80" height="80" rx="20" fill="url(#wlLgSC)"/>
+          <circle cx="40" cy="44" r="23" stroke="#fff" stroke-width="4"/>
+          <path d="M40 21v-7M33 14h14M58 26l4-4" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/>
+          <g stroke="rgba(255,255,255,0.65)" stroke-width="1.8">
+            <line x1="27" y1="36" x2="40" y2="32"/><line x1="40" y1="32" x2="53" y2="39"/>
+            <line x1="53" y1="39" x2="46" y2="55"/><line x1="46" y1="55" x2="32" y2="56"/>
+            <line x1="32" y1="56" x2="27" y2="36"/>
+          </g>
+          <circle cx="27" cy="36" r="2.6" fill="#fff"/><circle cx="40" cy="32" r="2.6" fill="#fff"/>
+          <circle cx="53" cy="39" r="2.6" fill="#fff"/><circle cx="46" cy="55" r="2.6" fill="#fff"/>
+          <circle cx="32" cy="56" r="2.6" fill="#fff"/>
+          <circle cx="40" cy="44" r="4" fill="#fff"/>
+          <path d="M40 44V33M40 44l9 6" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>
+        </svg>`,
+    },
+    rovers: {
+      primary: '#059669',
+      secondary: '#84cc16',
+      club: 'Emerald Rovers FC',
+      sub: 'Custom Football Club Crest • com.emeraldrovers.fc',
+      cta: 'Rovers App Live',
+      storeName: 'Emerald Rovers Official',
+      pushCopy: 'U14 & Senior 4-3-3 match lineups posted',
+      sponsorCopy: 'Greenfield Physio — Matchday Sponsor',
+      logoSvg: `
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="wlLgER" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#047857"/><stop offset="100%" stop-color="#84cc16"/></linearGradient></defs>
+          <rect width="80" height="80" rx="20" fill="url(#wlLgER)"/>
+          <path d="M40 12L62 20v19c0 15-10 24-22 29-12-5-22-14-22-29V20L40 12z" fill="rgba(255,255,255,0.16)" stroke="#fff" stroke-width="3.4" stroke-linejoin="round"/>
+          <path d="M22 44L58 26" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+          <path d="M24 51L56 35" stroke="rgba(255,255,255,0.55)" stroke-width="2.4" stroke-linecap="round"/>
+          <polygon points="40,18 42,23 47,23 43,26 44.5,31 40,28 35.5,31 37,26 33,23 38,23" fill="#fff"/>
+          <circle cx="40" cy="47" r="6" fill="#fff"/>
+          <circle cx="40" cy="47" r="2.6" fill="#047857"/>
+        </svg>`,
+    },
+    royal: {
+      primary: '#2563eb',
+      secondary: '#38bdf8',
+      club: 'Royal Athletic Union',
+      sub: 'Multi-Club Federation App • org.royalathletic.union',
+      cta: 'Federation Hub Live',
+      storeName: 'Royal Athletic Hub',
+      pushCopy: '99.1% Garda & Safeguard compliance verified',
+      sponsorCopy: 'BluePeak Hydration — Official Partner',
+      logoSvg: `
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="wlLgRA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1d4ed8"/><stop offset="100%" stop-color="#38bdf8"/></linearGradient></defs>
+          <rect width="80" height="80" rx="20" fill="url(#wlLgRA)"/>
+          <circle cx="40" cy="40" r="28" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-dasharray="4 4"/>
+          <path d="M20 46l5-20 15 10 15-10 5 20H20z" fill="rgba(255,255,255,0.22)" stroke="#fff" stroke-width="3.2" stroke-linejoin="round"/>
+          <path d="M23 53h34" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+          <path d="M28 60l12 5 12-5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="40" cy="21" r="3.6" fill="#fff"/>
+          <circle cx="25" cy="23" r="2.6" fill="#fff"/>
+          <circle cx="55" cy="23" r="2.6" fill="#fff"/>
+        </svg>`,
+    },
+    crimson: {
+      primary: '#e11d48',
+      secondary: '#f97316',
+      club: 'Crimson United AC',
+      sub: 'Zero SportConnect Branding • com.crimsonunited.ac',
+      cta: 'Crimson App Live',
+      storeName: 'Crimson United Pro',
+      pushCopy: 'Recovery check-in: Sauna & HRV targets ready',
+      sponsorCopy: 'Apex Performance Labs — Featured Offer',
+      logoSvg: `
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="wlLgCU" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#be123c"/><stop offset="100%" stop-color="#f97316"/></linearGradient></defs>
+          <rect width="80" height="80" rx="20" fill="url(#wlLgCU)"/>
+          <polygon points="40,10 64,24 64,56 40,70 16,56 16,24" fill="rgba(255,255,255,0.16)" stroke="#fff" stroke-width="3.4" stroke-linejoin="round"/>
+          <polygon points="40,17 58,27.5 58,52.5 40,63 22,52.5 22,27.5" stroke="rgba(255,255,255,0.4)" stroke-width="1.6"/>
+          <path d="M44 20L28 42h11l-4 18 17-22H41l3-18z" fill="#fff"/>
+        </svg>`,
+    },
   };
 
   const crestEl = document.getElementById('wl-club-crest');
   const nameEl = document.getElementById('wl-club-name');
   const subEl = document.getElementById('wl-club-sub');
+  const ctaEl = document.getElementById('wl-pill-cta');
+  const storeEl = document.getElementById('wl-store-name');
+  const pushEl = document.getElementById('wl-push-copy');
+  const sponsorEl = document.getElementById('wl-sponsor-copy');
+
+  function applyBrandTheme(key) {
+    const t = themes[key];
+    if (!t) return;
+    document.documentElement.style.setProperty('--wl-primary', t.primary);
+    document.documentElement.style.setProperty('--wl-secondary', t.secondary);
+    if (crestEl) {
+      crestEl.innerHTML = t.logoSvg;
+      crestEl.style.transform = 'scale(0.92)';
+      requestAnimationFrame(() => {
+        crestEl.style.transform = 'scale(1)';
+      });
+    }
+    if (nameEl) nameEl.textContent = t.club;
+    if (subEl) subEl.textContent = t.sub;
+    if (ctaEl) ctaEl.textContent = t.cta;
+    if (storeEl) storeEl.textContent = t.storeName;
+    if (pushEl) pushEl.textContent = t.pushCopy;
+    if (sponsorEl) sponsorEl.textContent = t.sponsorCopy;
+  }
 
   document.querySelectorAll('[data-wl-theme]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const t = themes[btn.dataset.wlTheme];
-      if (!t) return;
-      document.querySelectorAll('[data-wl-theme]').forEach((b) => b.classList.remove('is-active'));
+      document.querySelectorAll('[data-wl-theme]').forEach((b) => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('is-active');
-
-      document.documentElement.style.setProperty('--wl-primary', t.primary);
-      document.documentElement.style.setProperty('--wl-secondary', t.secondary);
-      if (crestEl) crestEl.textContent = t.code;
-      if (nameEl) nameEl.textContent = t.club;
-      if (subEl) subEl.textContent = t.sub;
+      btn.setAttribute('aria-pressed', 'true');
+      applyBrandTheme(btn.dataset.wlTheme);
     });
   });
+
+  // Render default logo on load
+  applyBrandTheme('default');
 
   // RBAC Exception Drawer
   const rbacBtn = document.getElementById('rbac-review-btn');

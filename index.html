@@ -32,7 +32,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=2">
+  <link rel="stylesheet" href="css/styles.css?v=3">
 </head>
 <body>
   <div class="tactical-grid-bg" aria-hidden="true"></div>
@@ -970,32 +970,93 @@
           <div>
             <div class="kicker-pill" style="margin-bottom: 0.5rem;">Interactive White-Label Preview</div>
             <h3 style="font-size: 1.35rem;">Re-Skin SportConnect in Seconds</h3>
-            <p class="footer-meta" style="margin-top: 0.25rem;">Tap a club identity below to preview dynamic white-label theming.</p>
+            <p class="footer-meta" style="margin-top: 0.25rem;">Tap any of the 4 club identities below to see custom crests, colorways, and native app branding update live.</p>
           </div>
         </div>
-        <div class="wl-swatches">
-          <button type="button" class="wl-swatch-btn is-active" data-wl-theme="default">
-            <span class="swatch-dot" style="background: linear-gradient(135deg, #22d3ee, #10b981);"></span> SportConnect
+
+        <div class="wl-swatches" role="radiogroup" aria-label="White-label brand presets">
+          <button type="button" class="wl-swatch-btn is-active" data-wl-theme="default" aria-pressed="true">
+            <span class="wl-mini-logo" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none">
+                <defs><linearGradient id="wlMiniSC" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0891b2"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs>
+                <rect width="64" height="64" rx="16" fill="url(#wlMiniSC)"/>
+                <circle cx="32" cy="35" r="18" stroke="#fff" stroke-width="3.5"/>
+                <path d="M32 17v-5M26 12h12" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
+                <circle cx="32" cy="35" r="3" fill="#fff"/>
+                <path d="M32 35V25M32 35l8 5" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span>SportConnect</span>
           </button>
-          <button type="button" class="wl-swatch-btn" data-wl-theme="rovers">
-            <span class="swatch-dot" style="background: linear-gradient(135deg, #10b981, #a3e635);"></span> Emerald Rovers
+
+          <button type="button" class="wl-swatch-btn" data-wl-theme="rovers" aria-pressed="false">
+            <span class="wl-mini-logo" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none">
+                <defs><linearGradient id="wlMiniER" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#84cc16"/></linearGradient></defs>
+                <rect width="64" height="64" rx="16" fill="url(#wlMiniER)"/>
+                <path d="M32 10L50 17v15c0 12-8 19-18 23-10-4-18-11-18-23V17L32 10z" fill="rgba(255,255,255,0.16)" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M18 35L46 21" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="32" cy="34" r="5" fill="#fff"/>
+              </svg>
+            </span>
+            <span>Emerald Rovers</span>
           </button>
-          <button type="button" class="wl-swatch-btn" data-wl-theme="royal">
-            <span class="swatch-dot" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);"></span> Royal Athletic
+
+          <button type="button" class="wl-swatch-btn" data-wl-theme="royal" aria-pressed="false">
+            <span class="wl-mini-logo" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none">
+                <defs><linearGradient id="wlMiniRA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#38bdf8"/></linearGradient></defs>
+                <rect width="64" height="64" rx="16" fill="url(#wlMiniRA)"/>
+                <path d="M16 39l4-17 12 8 12-8 4 17H16z" fill="rgba(255,255,255,0.2)" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M18 46h28" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+                <circle cx="32" cy="18" r="3" fill="#fff"/>
+              </svg>
+            </span>
+            <span>Royal Athletic</span>
           </button>
-          <button type="button" class="wl-swatch-btn" data-wl-theme="crimson">
-            <span class="swatch-dot" style="background: linear-gradient(135deg, #f43f5e, #fb923c);"></span> Crimson United
+
+          <button type="button" class="wl-swatch-btn" data-wl-theme="crimson" aria-pressed="false">
+            <span class="wl-mini-logo" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none">
+                <defs><linearGradient id="wlMiniCU" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e11d48"/><stop offset="100%" stop-color="#f97316"/></linearGradient></defs>
+                <rect width="64" height="64" rx="16" fill="url(#wlMiniCU)"/>
+                <polygon points="32,9 51,20 51,44 32,55 13,44 13,20" fill="rgba(255,255,255,0.16)" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M35 17L23 34h9l-3 13 12-17h-9l3-13z" fill="#fff"/>
+              </svg>
+            </span>
+            <span>Crimson United</span>
           </button>
         </div>
+
         <div class="wl-mockup-bar">
           <div class="wl-club-badge">
-            <div id="wl-club-crest" class="wl-club-crest">SC</div>
+            <div id="wl-club-crest" class="wl-club-crest" aria-hidden="true">
+              <!-- Populated & swapped dynamically with crisp inline club crest SVG -->
+            </div>
             <div>
-              <div id="wl-club-name" class="mini-title" style="font-size: 0.95rem;">SportConnect Native</div>
-              <div id="wl-club-sub" class="mini-sub">Default Enterprise Theme</div>
+              <div id="wl-club-name" class="mini-title" style="font-size: 1.05rem;">SportConnect Native</div>
+              <div id="wl-club-sub" class="mini-sub">Default Enterprise Theme • com.sportconnect.app</div>
             </div>
           </div>
-          <span class="wl-pill-cta">Member App Live</span>
+          <span id="wl-pill-cta" class="wl-pill-cta">Member App Live</span>
+        </div>
+
+        <div class="wl-showcase-grid">
+          <div class="wl-showcase-tile">
+            <div class="wl-showcase-label">App Store Presence</div>
+            <div id="wl-store-name" class="wl-showcase-val">SportConnect Pro</div>
+            <div class="mini-sub">iOS &amp; Android Native Build</div>
+          </div>
+          <div class="wl-showcase-tile">
+            <div class="wl-showcase-label">Branded Push Alert</div>
+            <div id="wl-push-copy" class="wl-showcase-val">Squad sheet published for Sat 14:00</div>
+            <div class="mini-sub">100% Club Crest &amp; Sender ID</div>
+          </div>
+          <div class="wl-showcase-tile">
+            <div class="wl-showcase-label">Sponsor Slot</div>
+            <div id="wl-sponsor-copy" class="wl-showcase-val">Official Kit Partner Banner Active</div>
+            <div class="mini-sub">Direct Club Ad Revenue</div>
+          </div>
         </div>
       </div>
 
@@ -1263,6 +1324,6 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=2" defer></script>
+  <script src="js/app.js?v=3" defer></script>
 </body>
 </html>
