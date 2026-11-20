@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportConnect | Enterprise Sports Platform</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Config for Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            900: '#1e3a8a',
+                        },
+                        accent: {
+                            light: '#10b981',
+                            dark: '#34d399'
+                        }
+                    },
+                    boxShadow: {
+                        'neo': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0,0,0,0.02)',
+                        'neo-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0,0,0,0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Transitions */
+        body { color: #0f172a; }
+        
+        /* Hide scrollbars for clean UI */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* 360 Process Flow Styles */
+        .process-flow { display: flex; flex-direction: column; gap: 1rem; }
+        @media (min-width: 768px) { .process-flow { flex-direction: row; align-items: center; justify-content: space-between; } }
+        .process-step { flex: 1; position: relative; padding: 1.5rem; border-radius: 1rem; text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease; background: white; }
+        .process-step:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
+        .process-arrow { display: none; }
+        @media (min-width: 768px) { .process-arrow { display: block; color: #cbd5e1; font-size: 1.25rem; } }
+
+        /* CSS Phone Mockup */
+        .phone-mockup { 
+            width: 280px; 
+            height: 560px; 
+            border: 10px solid #cbd5e1; 
+            border-radius: 2.5rem; 
+            position: relative; 
+            overflow: hidden; 
+            background-color: #f8fafc; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); 
+            margin: 0 auto; 
+        }
+        .phone-notch { 
+            position: absolute; 
+            top: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 100px; 
+            height: 24px; 
+            background-color: #cbd5e1; 
+            border-bottom-left-radius: 1rem; 
+            border-bottom-right-radius: 1rem; 
+            z-index: 20; 
+        }
+        
+        /* Carousel specific */
+        .mockup-carousel {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+        .mockup-screen {
+            width: 100%;
+            height: 100%;
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+            padding: 2.5rem 1rem 1rem 1rem;
+            position: relative;
+            background: #f8fafc;
+        }
+
+        /* Screen Indicators */
+        .screen-indicator {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 30;
+            background: rgba(255,255,255,0.8);
+            padding: 4px 8px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .indicator-dot { width: 6px; height: 6px; border-radius: 50%; background: #94a3b8; }
+    </style>
+</head>
+<body class="font-sans min-h-screen flex flex-col antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Logo with inline SVG -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer gap-2 group" onclick="switchMainTab('home')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="h-10 w-10 transition-transform group-hover:scale-105">
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#06b6d4" />
+                                <stop offset="100%" stop-color="#10b981" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Stopwatch Body -->
+                        <circle cx="50" cy="55" r="38" fill="none" stroke="url(#logoGrad)" stroke-width="5" />
+                        <!-- Buttons -->
+                        <path d="M50 17 L50 9 M42 9 L58 9 M42 13 L58 13" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M77 28 L83 22 M79 20 L85 26" stroke="url(#logoGrad)" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Network Nodes and Lines -->
+                        <g stroke="url(#logoGrad)" stroke-width="2" fill="url(#logoGrad)">
+                            <line x1="30" y1="40" x2="50" y2="35" /><line x1="50" y1="35" x2="70" y2="45" /><line x1="70" y1="45" x2="60" y2="70" /><line x1="60" y1="70" x2="40" y2="75" /><line x1="40" y1="75" x2="30" y2="40" /><line x1="50" y1="35" x2="50" y2="55" /><line x1="50" y1="55" x2="30" y2="60" /><line x1="70" y1="45" x2="85" y2="45" />
+                            <circle cx="30" cy="40" r="3" /><circle cx="50" cy="35" r="3" /><circle cx="70" cy="45" r="3" /><circle cx="60" cy="70" r="3" /><circle cx="40" cy="75" r="3" /><circle cx="30" cy="60" r="3" />
+                            <!-- Stopwatch Hands -->
+                            <circle cx="50" cy="55" r="4.5" />
+                            <line x1="50" y1="55" x2="50" y2="38" stroke-width="3.5" stroke-linecap="round" />
+                            <line x1="50" y1="55" x2="63" y2="63" stroke-width="3.5" stroke-linecap="round" />
+                        </g>
+                    </svg>
+                    <span class="text-2xl font-extrabold tracking-tight text-slate-900 transition-transform group-hover:scale-105">
+                        Sport<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-emerald-500">Connect</span>
+                    </span>
+                </div>
+                
+                <!-- Main Desktop Nav -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <button id="nav-home" onclick="switchMainTab('home')" class="top-nav-btn text-cyan-600 font-bold hover:text-cyan-500 transition-colors py-2">Home</button>
+                    <button id="nav-products" onclick="switchMainTab('products')" class="top-nav-btn text-slate-500 hover:text-slate-900 font-medium transition-colors py-2 flex items-center gap-1">Products <i class="fa-solid fa-chevron-down text-xs"></i></button>
+                    <button id="nav-commercial" onclick="switchMainTab('commercial')" class="top-nav-btn text-slate-500 hover:text-slate-900 font-medium transition-colors py-2">Commercial</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-slate-500 hover:text-slate-900 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub-Navigation for Products (Visible only when Products tab is active) -->
+        <div id="products-subnav" class="hidden border-t border-slate-100 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex space-x-2 overflow-x-auto hide-scrollbar py-3">
+                    <button id="subnav-match" onclick="switchProductTab('match')" class="sub-nav-btn shrink-0 bg-slate-900 text-white px-4 py-1.5 rounded-full text-sm font-semibold transition-all">Match Day</button>
+                    <button id="subnav-pt" onclick="switchProductTab('pt')" class="sub-nav-btn shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200 px-4 py-1.5 rounded-full text-sm font-semibold transition-all">Personal Training</button>
+                    <button id="subnav-tri" onclick="switchProductTab('tri')" class="sub-nav-btn shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200 px-4 py-1.5 rounded-full text-sm font-semibold transition-all">Triathlon</button>
+                    <button id="subnav-academy" onclick="switchProductTab('academy')" class="sub-nav-btn shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200 px-4 py-1.5 rounded-full text-sm font-semibold transition-all">Academy</button>
+                    <button id="subnav-safeguard" onclick="switchProductTab('safeguard')" class="sub-nav-btn shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200 px-4 py-1.5 rounded-full text-sm font-semibold transition-all">Safeguard</button>
+                    <button id="subnav-recovery" onclick="switchProductTab('recovery')" class="sub-nav-btn shrink-0 bg-slate-100 text-slate-600 hover:bg-slate-200 px-4 py-1.5 rounded-full text-sm font-semibold transition-all">Recovery</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 shadow-neo">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <button onclick="switchMainTab('home'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 text-slate-900 font-semibold border-b border-slate-100">Home</button>
+                <div class="px-3 py-2 font-semibold text-slate-400 text-sm uppercase tracking-wider">Products</div>
+                <div class="pl-6 space-y-2 border-b border-slate-100 pb-2">
+                    <button onclick="switchMainTab('products', 'match'); toggleMobileMenu()" class="block w-full text-left text-slate-600 hover:text-cyan-600">Match Day & Tactics</button>
+                    <button onclick="switchMainTab('products', 'pt'); toggleMobileMenu()" class="block w-full text-left text-slate-600 hover:text-cyan-600">Personal Training</button>
+                    <button onclick="switchMainTab('products', 'tri'); toggleMobileMenu()" class="block w-full text-left text-slate-600 hover:text-cyan-600">Triathlon</button>
+                    <button onclick="switchMainTab('products', 'academy'); toggleMobileMenu()" class="block w-full text-left text-slate-600 hover:text-cyan-600">Academy</button>
+                    <button onclick="switchMainTab('products', 'safeguard'); toggleMobileMenu()" class="block w-full text-left text-slate-600 hover:text-cyan-600">Safeguard</button>
+                    <button onclick="switchMainTab('products', 'recovery'); toggleMobileMenu()" class="block w-full text-left text-slate-600 hover:text-cyan-600">Recovery</button>
+                </div>
+                <button onclick="switchMainTab('commercial'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 text-slate-900 font-semibold">Commercial</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        <!-- ================= MAIN TAB 1: HOME ================= -->
+        <section id="section-home" class="main-section block space-y-16">
+            <!-- Hero -->
+            <div class="text-center max-w-4xl mx-auto space-y-6 pt-8 pb-4">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 text-sm font-semibold mb-2 shadow-sm">
+                    <i class="fa-solid fa-layer-group text-cyan-500"></i> Unified Sports Ecosystems
+                </div>
+                <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
+                    Scale Your Sports Business with <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-emerald-500">Intelligent Apps</span>
+                </h1>
+                <p class="text-xl text-slate-500 max-w-3xl mx-auto font-medium">
+                    SportConnect delivers a suite of lightweight, hyper-focused applications for clubs, trainers, tacticians, and event organizers. Manage scaling, coordination, and operations from one central, white-labeled architecture.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 pt-6">
+                    <button onclick="switchMainTab('commercial')" class="bg-slate-900 hover:bg-slate-800 text-white px-8 py-3.5 rounded-xl font-semibold shadow-neo transition-all transform hover:-translate-y-0.5">
+                        Explore Commercial Model
+                    </button>
+                    <button onclick="switchMainTab('products')" class="bg-white text-slate-900 border border-slate-200 hover:border-cyan-500 px-8 py-3.5 rounded-xl font-semibold transition-all shadow-sm flex items-center justify-center gap-2">
+                        View Product Suite <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Deep Value Proposition Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-neo hover:shadow-neo-lg transition-shadow">
+                    <div class="w-12 h-12 bg-slate-50 border border-slate-100 text-blue-600 rounded-xl flex items-center justify-center text-xl mb-6 shadow-sm"><i class="fa-solid fa-microchip"></i></div>
+                    <h3 class="font-bold text-xl text-slate-900 mb-3">Agentic Tactical Engine</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Leverage autonomous AI to ingest opponent data. The engine automatically suggests optimized tactical formations and generates modular training routines to exploit weaknesses.</p>
+                </div>
+                <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-neo hover:shadow-neo-lg transition-shadow">
+                    <div class="w-12 h-12 bg-slate-50 border border-slate-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-6 shadow-sm"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3 class="font-bold text-xl text-slate-900 mb-3">Scale Your Operations</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Designed for growth. Whether you manage a single PT roster or a multi-jurisdictional academy federation, our infrastructure scales seamlessly with unified data tracking.</p>
+                </div>
+                <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-neo hover:shadow-neo-lg transition-shadow">
+                    <div class="w-12 h-12 bg-slate-50 border border-slate-100 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-6 shadow-sm"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="font-bold text-xl text-slate-900 mb-3">Zero-Trust Architecture</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">A strictly enforced Role-Based Access Control (RBAC) model ensures cross-jurisdictional usage remains compliant, secure, and isolated exactly where necessary.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MAIN TAB 2: PRODUCTS ================= -->
+        <section id="section-products" class="main-section hidden space-y-8">
+            
+            <!-- PRODUCT: MATCH DAY -->
+            <div id="view-match" class="product-view block animate-fadeIn">
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="flex-1 space-y-6">
+                        <div class="w-14 h-14 bg-cyan-50 border border-cyan-100 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-sm"><i class="fa-solid fa-chess-knight"></i></div>
+                        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Match Day & Tactics</h2>
+                        <p class="text-slate-600 text-lg leading-relaxed">The tactician's command center. Set up formations, orchestrate match day teams, schedule fixtures, and coordinate seamlessly with your coaching staff and club management.</p>
+                        
+                        <div class="mt-8 border border-slate-200 bg-white rounded-2xl p-6 shadow-neo">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">360° Match Day Workflow</h3>
+                            <div class="process-flow">
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-pen-ruler text-2xl text-cyan-500 mb-2"></i><h4 class="font-bold text-sm">1. Setup Tactics</h4><p class="text-[10px] text-slate-500 mt-1">Coach designs formations.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-calendar-check text-2xl text-blue-500 mb-2"></i><h4 class="font-bold text-sm">2. Schedule</h4><p class="text-[10px] text-slate-500 mt-1">Push fixture to team app.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-users text-2xl text-emerald-500 mb-2"></i><h4 class="font-bold text-sm">3. Coordinate</h4><p class="text-[10px] text-slate-500 mt-1">Player availability syncs.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-clipboard-list text-2xl text-purple-500 mb-2"></i><h4 class="font-bold text-sm">4. Manage</h4><p class="text-[10px] text-slate-500 mt-1">Live club management.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 flex justify-center w-full relative">
+                        <div class="phone-mockup">
+                            <div class="phone-notch"></div>
+                            <div class="mockup-carousel hide-scrollbar">
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">1. Formations</div>
+                                    <div class="w-full h-48 bg-green-500 rounded-lg border-2 border-white relative shadow-inner overflow-hidden">
+                                        <div class="absolute top-1/2 left-0 w-full h-[2px] bg-white opacity-50"></div>
+                                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 border-2 border-white rounded-full opacity-50"></div>
+                                        <!-- Player Nodes -->
+                                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full"></div>
+                                        <div class="absolute bottom-12 left-1/4 w-4 h-4 bg-white rounded-full"></div>
+                                        <div class="absolute bottom-12 right-1/4 w-4 h-4 bg-white rounded-full"></div>
+                                    </div>
+                                    <div class="mt-4 bg-white p-3 rounded-lg shadow-sm border border-slate-100"><div class="h-2 w-1/2 bg-slate-200 rounded mb-2"></div><div class="h-2 w-3/4 bg-slate-100 rounded"></div></div>
+                                </div>
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">2. Scheduling</div>
+                                    <div class="space-y-3">
+                                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-center justify-between">
+                                            <div><div class="text-sm font-bold text-slate-800">vs Rovers FC</div><div class="text-xs text-slate-500">Sat, 14:00</div></div>
+                                            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
+                                        </div>
+                                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-center justify-between">
+                                            <div><div class="text-sm font-bold text-slate-800">Training</div><div class="text-xs text-slate-500">Tue, 18:00</div></div>
+                                            <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-xs"><i class="fa-solid fa-clock"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">3. Club Roster</div>
+                                    <div class="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+                                        <div class="p-3 border-b border-slate-50 flex items-center gap-3"><div class="w-8 h-8 bg-slate-200 rounded-full"></div><div class="text-sm font-bold">J. Smith (C)</div></div>
+                                        <div class="p-3 border-b border-slate-50 flex items-center gap-3"><div class="w-8 h-8 bg-slate-200 rounded-full"></div><div class="text-sm font-bold">M. Davis</div></div>
+                                        <div class="p-3 border-b border-slate-50 flex items-center gap-3"><div class="w-8 h-8 bg-slate-200 rounded-full"></div><div class="text-sm font-bold">L. Johnson</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="screen-indicator"><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><span class="text-[8px] font-bold text-slate-500 ml-1 uppercase">Swipe</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT: PERSONAL TRAINING -->
+            <div id="view-pt" class="product-view hidden animate-fadeIn">
+                 <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="flex-1 space-y-6">
+                        <div class="w-14 h-14 bg-orange-50 border border-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-sm"><i class="fa-solid fa-dumbbell"></i></div>
+                        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Personal Training</h2>
+                        <p class="text-slate-600 text-lg leading-relaxed">Elevate client results. Schedule training, share visual routines, demonstrate proper form, capture nutrition logs, and connect seamlessly to wearables for live heart rate tracking.</p>
+                        
+                        <div class="mt-8 border border-slate-200 bg-white rounded-2xl p-6 shadow-neo">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">360° PT Workflow</h3>
+                            <div class="process-flow">
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-list-check text-2xl text-orange-500 mb-2"></i><h4 class="font-bold text-sm">1. Routines</h4><p class="text-[10px] text-slate-500 mt-1">Share demo workouts.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-apple-whole text-2xl text-red-500 mb-2"></i><h4 class="font-bold text-sm">2. Nutrition</h4><p class="text-[10px] text-slate-500 mt-1">Client logs daily macros.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-watch-fitness text-2xl text-blue-500 mb-2"></i><h4 class="font-bold text-sm">3. Wearables</h4><p class="text-[10px] text-slate-500 mt-1">Sync live HR metrics.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-chart-pie text-2xl text-emerald-500 mb-2"></i><h4 class="font-bold text-sm">4. Progress</h4><p class="text-[10px] text-slate-500 mt-1">Analyze scaling results.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 flex justify-center w-full relative">
+                        <div class="phone-mockup">
+                            <div class="phone-notch"></div>
+                            <div class="mockup-carousel hide-scrollbar">
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">1. Routine</div>
+                                    <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-3 mb-3 flex gap-3 items-center">
+                                        <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center text-slate-400"><i class="fa-solid fa-play"></i></div>
+                                        <div><div class="text-sm font-bold">Deadlifts</div><div class="text-xs text-slate-500">4 sets x 8 reps</div></div>
+                                    </div>
+                                    <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-3 flex gap-3 items-center">
+                                        <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center text-slate-400"><i class="fa-solid fa-play"></i></div>
+                                        <div><div class="text-sm font-bold">Bench Press</div><div class="text-xs text-slate-500">3 sets x 10 reps</div></div>
+                                    </div>
+                                </div>
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">2. Nutrition</div>
+                                    <div class="w-32 h-32 mx-auto rounded-full border-8 border-emerald-400 flex items-center justify-center mb-6">
+                                        <div class="text-center"><div class="text-xl font-bold text-slate-800">1,850</div><div class="text-[10px] text-slate-500 uppercase">kcal</div></div>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                                        <div class="bg-white p-2 rounded shadow-sm"><strong>140g</strong><br><span class="text-slate-500">Pro</span></div>
+                                        <div class="bg-white p-2 rounded shadow-sm"><strong>180g</strong><br><span class="text-slate-500">Carb</span></div>
+                                        <div class="bg-white p-2 rounded shadow-sm"><strong>60g</strong><br><span class="text-slate-500">Fat</span></div>
+                                    </div>
+                                </div>
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">3. Wearables</div>
+                                    <div class="bg-red-50 rounded-xl p-4 border border-red-100 text-center mb-4 shadow-sm">
+                                        <i class="fa-solid fa-heart-pulse text-red-500 text-3xl mb-2"></i>
+                                        <div class="text-3xl font-black text-slate-900">142 <span class="text-sm font-normal text-slate-500">bpm</span></div>
+                                        <div class="text-xs text-red-600 font-bold mt-1">Zone 3 - Aerobic</div>
+                                    </div>
+                                    <div class="h-16 w-full bg-white rounded-lg border border-slate-100 flex items-end px-2 gap-1 pb-1 shadow-sm">
+                                        <div class="w-1/6 bg-slate-200 h-1/4 rounded-t"></div><div class="w-1/6 bg-slate-200 h-2/4 rounded-t"></div><div class="w-1/6 bg-red-400 h-3/4 rounded-t"></div><div class="w-1/6 bg-red-500 h-full rounded-t"></div><div class="w-1/6 bg-red-400 h-3/4 rounded-t"></div><div class="w-1/6 bg-slate-200 h-1/4 rounded-t"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="screen-indicator"><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><span class="text-[8px] font-bold text-slate-500 ml-1 uppercase">Swipe</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT: TRIATHLON -->
+            <div id="view-tri" class="product-view hidden animate-fadeIn">
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="flex-1 space-y-6">
+                        <div class="w-14 h-14 bg-sky-50 border border-sky-100 text-sky-600 rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-sm"><i class="fa-solid fa-person-swimming"></i></div>
+                        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Triathlon Planner</h2>
+                        <p class="text-slate-600 text-lg leading-relaxed">Comprehensive race and route management. Map out complex routes, define safe zones, strategically place drink stations, mark critical stop points, and ensure rapid first aid deployment.</p>
+                        
+                        <div class="mt-8 border border-slate-200 bg-white rounded-2xl p-6 shadow-neo">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">360° Race Management Workflow</h3>
+                            <div class="process-flow">
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-map-location-dot text-2xl text-sky-500 mb-2"></i><h4 class="font-bold text-sm">1. Map Routes</h4><p class="text-[10px] text-slate-500 mt-1">Plot Swim/Bike/Run.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-bottle-water text-2xl text-blue-500 mb-2"></i><h4 class="font-bold text-sm">2. Drink Zones</h4><p class="text-[10px] text-slate-500 mt-1">Place hydration stations.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-hand text-2xl text-orange-500 mb-2"></i><h4 class="font-bold text-sm">3. Stop Points</h4><p class="text-[10px] text-slate-500 mt-1">Mark safety breaks.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-truck-medical text-2xl text-red-500 mb-2"></i><h4 class="font-bold text-sm">4. First Aid</h4><p class="text-[10px] text-slate-500 mt-1">Rapid medic routing.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 flex justify-center w-full relative">
+                        <div class="phone-mockup">
+                            <div class="phone-notch"></div>
+                            <div class="mockup-carousel hide-scrollbar">
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">1. Routing</div>
+                                    <div class="w-full h-48 bg-slate-200 rounded-lg overflow-hidden relative shadow-inner">
+                                        <div class="absolute inset-0 opacity-30 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiM5NGEzYjgiLz48L3N2Zz4=')]"></div>
+                                        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                            <path d="M10,90 Q30,40 50,50 T90,10" fill="none" stroke="#0ea5e9" stroke-width="4" stroke-dasharray="4" />
+                                        </svg>
+                                        <div class="absolute top-2 right-2 w-6 h-6 bg-sky-500 rounded-full text-white flex items-center justify-center text-[10px] shadow-sm"><i class="fa-solid fa-person-biking"></i></div>
+                                    </div>
+                                </div>
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">2. Safe Zones</div>
+                                    <div class="space-y-3">
+                                        <div class="bg-white p-3 rounded-lg border-l-4 border-blue-500 shadow-sm flex justify-between items-center">
+                                            <div><div class="text-sm font-bold text-slate-800">Hydration Alpha</div><div class="text-xs text-slate-500">KM 15.2</div></div>
+                                            <i class="fa-solid fa-bottle-water text-blue-500"></i>
+                                        </div>
+                                        <div class="bg-white p-3 rounded-lg border-l-4 border-orange-500 shadow-sm flex justify-between items-center">
+                                            <div><div class="text-sm font-bold text-slate-800">Check Point 2</div><div class="text-xs text-slate-500">KM 40.0</div></div>
+                                            <i class="fa-solid fa-hand text-orange-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">3. First Aid</div>
+                                    <div class="bg-red-50 p-4 rounded-xl border border-red-100 mb-4 shadow-sm">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <div class="w-10 h-10 bg-red-500 text-white rounded-full flex items-center justify-center"><i class="fa-solid fa-truck-medical"></i></div>
+                                            <div><div class="text-sm font-bold text-red-900">Medic Unit B</div><div class="text-xs text-red-700">On Standby</div></div>
+                                        </div>
+                                        <button class="w-full py-2 bg-red-600 text-white text-xs font-bold rounded-lg shadow mt-2">Deploy to Sector 4</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="screen-indicator"><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><span class="text-[8px] font-bold text-slate-500 ml-1 uppercase">Swipe</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT: ACADEMY -->
+            <div id="view-academy" class="product-view hidden animate-fadeIn">
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="flex-1 space-y-6">
+                        <div class="w-14 h-14 bg-emerald-50 border border-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-sm"><i class="fa-solid fa-seedling"></i></div>
+                        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Academy Management</h2>
+                        <p class="text-slate-600 text-lg leading-relaxed">Built for grassroots development. The engine utilizes <strong>algorithmic player rotation grids to guarantee fair playing time across 5v5, 6v6, and 7v7 match formats</strong>. Ensure every child gets their chance.</p>
+                        
+                        <div class="mt-8 border border-slate-200 bg-white rounded-2xl p-6 shadow-neo">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">360° Academy Workflow</h3>
+                            <div class="process-flow">
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-table-cells text-2xl text-emerald-500 mb-2"></i><h4 class="font-bold text-sm">1. Algorithms</h4><p class="text-[10px] text-slate-500 mt-1">Auto-fair grid setup.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-stopwatch text-2xl text-orange-500 mb-2"></i><h4 class="font-bold text-sm">2. Swap Alerts</h4><p class="text-[10px] text-slate-500 mt-1"><strong>Mid-quarter swap alerts</strong> buzz.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-scale-balanced text-2xl text-blue-500 mb-2"></i><h4 class="font-bold text-sm">3. 50/50 Splits</h4><p class="text-[10px] text-slate-500 mt-1">Guarantee equal minutes.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-file-image text-2xl text-purple-500 mb-2"></i><h4 class="font-bold text-sm">4. Exports</h4><p class="text-[10px] text-slate-500 mt-1"><strong>Visual team sheet image exports</strong>.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 flex justify-center w-full relative">
+                        <div class="phone-mockup">
+                            <div class="phone-notch"></div>
+                            <div class="mockup-carousel hide-scrollbar">
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">1. Rotation Grid</div>
+                                    <div class="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden text-center text-xs">
+                                        <div class="grid grid-cols-4 bg-slate-50 font-bold border-b border-slate-100"><div class="p-2">Player</div><div class="p-2">Q1</div><div class="p-2">Q2</div><div class="p-2">Q3</div></div>
+                                        <div class="grid grid-cols-4 border-b border-slate-50"><div class="p-2 font-medium">Leo</div><div class="p-2 bg-emerald-100">On</div><div class="p-2 bg-slate-100">Sub</div><div class="p-2 bg-emerald-100">On</div></div>
+                                        <div class="grid grid-cols-4 border-b border-slate-50"><div class="p-2 font-medium">Mia</div><div class="p-2 bg-slate-100">Sub</div><div class="p-2 bg-emerald-100">On</div><div class="p-2 bg-emerald-100">On</div></div>
+                                    </div>
+                                </div>
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">2. Swap Alerts</div>
+                                    <div class="h-32 rounded-xl bg-slate-900 text-white flex flex-col items-center justify-center p-4 shadow-neo relative overflow-hidden">
+                                        <div class="absolute -right-4 -top-4 w-16 h-16 bg-orange-500 rounded-full blur-xl opacity-50 animate-pulse"></div>
+                                        <i class="fa-solid fa-bell text-3xl text-orange-400 mb-2"></i>
+                                        <div class="font-bold text-lg">Swap Required</div>
+                                        <div class="text-xs text-slate-400">Mid-Quarter (50/50 Split)</div>
+                                    </div>
+                                </div>
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">3. Team Sheet</div>
+                                    <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                                        <div class="w-full h-24 bg-slate-100 rounded-lg flex items-center justify-center mb-3 border border-dashed border-slate-300">
+                                            <i class="fa-regular fa-image text-3xl text-slate-300"></i>
+                                        </div>
+                                        <button class="w-full py-2 bg-blue-600 text-white rounded-lg text-xs font-bold shadow-sm flex justify-center items-center gap-2">
+                                            <i class="fa-solid fa-download"></i> Export Image
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="screen-indicator"><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><span class="text-[8px] font-bold text-slate-500 ml-1 uppercase">Swipe</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT: SAFEGUARD -->
+            <div id="view-safeguard" class="product-view hidden animate-fadeIn">
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="flex-1 space-y-6">
+                        <div class="w-14 h-14 bg-purple-50 border border-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-sm"><i class="fa-solid fa-shield-cat"></i></div>
+                        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Safeguard Compliance</h2>
+                        <p class="text-slate-600 text-lg leading-relaxed">Your club's secure compliance control plane. Automate background checks, manage <strong>Police & Garda Vetting</strong> securely, and digitally track critical medical waivers before any player steps on the pitch.</p>
+                        
+                        <div class="mt-8 border border-slate-200 bg-white rounded-2xl p-6 shadow-neo">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">360° Compliance Workflow</h3>
+                            <div class="process-flow">
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-id-card-clip text-2xl text-purple-500 mb-2"></i><h4 class="font-bold text-sm">1. Verification</h4><p class="text-[10px] text-slate-500 mt-1">Staff upload IDs.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-building-shield text-2xl text-blue-500 mb-2"></i><h4 class="font-bold text-sm">2. Background</h4><p class="text-[10px] text-slate-500 mt-1">Police & Garda checks.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-file-medical text-2xl text-red-500 mb-2"></i><h4 class="font-bold text-sm">3. Waivers</h4><p class="text-[10px] text-slate-500 mt-1">Digital medical forms.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-lock text-2xl text-emerald-500 mb-2"></i><h4 class="font-bold text-sm">4. Clearance</h4><p class="text-[10px] text-slate-500 mt-1">Zero-trust access granted.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 flex justify-center w-full relative">
+                        <div class="phone-mockup">
+                            <div class="phone-notch"></div>
+                            <div class="mockup-carousel hide-scrollbar">
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">1. Vetting Status</div>
+                                    <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm text-center">
+                                        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full mx-auto flex items-center justify-center text-2xl mb-3"><i class="fa-solid fa-check"></i></div>
+                                        <h4 class="font-bold text-slate-900">Coach Sarah J.</h4>
+                                        <div class="text-xs font-bold text-emerald-600 mt-1 uppercase">Garda Vetted</div>
+                                        <div class="text-[10px] text-slate-400 mt-1">Valid until: Oct 2028</div>
+                                    </div>
+                                </div>
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">2. Waivers</div>
+                                    <div class="space-y-3">
+                                        <div class="bg-white p-3 rounded-lg border border-slate-100 shadow-sm flex items-start gap-3">
+                                            <i class="fa-solid fa-file-signature text-blue-500 mt-1"></i>
+                                            <div><div class="text-sm font-bold text-slate-800">Medical Consent</div><div class="text-[10px] text-slate-500">Signed by Parent/Guardian</div></div>
+                                        </div>
+                                        <div class="bg-white p-3 rounded-lg border border-slate-100 shadow-sm flex items-start gap-3 opacity-60">
+                                            <i class="fa-solid fa-triangle-exclamation text-orange-500 mt-1"></i>
+                                            <div><div class="text-sm font-bold text-slate-800">Media Release</div><div class="text-[10px] text-orange-600 font-bold">Pending Signature</div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">3. Access Control</div>
+                                    <div class="bg-slate-900 p-4 rounded-xl shadow-neo text-white">
+                                        <div class="flex justify-between items-center mb-4">
+                                            <span class="text-sm font-bold">Roster Access</span>
+                                            <div class="w-8 h-4 bg-emerald-500 rounded-full relative"><div class="w-3 h-3 bg-white rounded-full absolute right-0.5 top-0.5"></div></div>
+                                        </div>
+                                        <div class="text-xs text-slate-400 border-t border-slate-700 pt-3">Access granted automatically upon successful Police background clearance.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="screen-indicator"><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><span class="text-[8px] font-bold text-slate-500 ml-1 uppercase">Swipe</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT: RECOVERY -->
+            <div id="view-recovery" class="product-view hidden animate-fadeIn">
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="flex-1 space-y-6">
+                        <div class="w-14 h-14 bg-rose-50 border border-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-sm"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+                        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Advanced Recovery</h2>
+                        <p class="text-slate-600 text-lg leading-relaxed">Optimize the physiological rebuild phase. Integrate with wearables to monitor HRV, sleep cycles, and log precise thermal therapies including <strong>high-temp sauna and ice bath exposure times</strong>.</p>
+                        
+                        <div class="mt-8 border border-slate-200 bg-white rounded-2xl p-6 shadow-neo">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">360° Recovery Workflow</h3>
+                            <div class="process-flow">
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-watch-apple text-2xl text-slate-700 mb-2"></i><h4 class="font-bold text-sm">1. Wearables</h4><p class="text-[10px] text-slate-500 mt-1">Capture sleep & HRV.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-fire text-2xl text-rose-500 mb-2"></i><h4 class="font-bold text-sm">2. Heat Phase</h4><p class="text-[10px] text-slate-500 mt-1">Log Sauna exposure.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-snowflake text-2xl text-cyan-500 mb-2"></i><h4 class="font-bold text-sm">3. Cold Phase</h4><p class="text-[10px] text-slate-500 mt-1">Log Ice Bath times.</p></div>
+                                <i class="fa-solid fa-arrow-right process-arrow"></i>
+                                <div class="process-step border border-slate-100"><i class="fa-solid fa-battery-full text-2xl text-emerald-500 mb-2"></i><h4 class="font-bold text-sm">4. Readiness</h4><p class="text-[10px] text-slate-500 mt-1">Algorithm output.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 flex justify-center w-full relative">
+                        <div class="phone-mockup">
+                            <div class="phone-notch"></div>
+                            <div class="mockup-carousel hide-scrollbar">
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">1. Biometrics</div>
+                                    <div class="grid grid-cols-2 gap-3 mb-4">
+                                        <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                                            <div class="text-[10px] text-slate-500 font-bold uppercase mb-1">HRV</div>
+                                            <div class="text-xl font-black text-slate-900">62 <span class="text-[10px] font-normal text-slate-400">ms</span></div>
+                                        </div>
+                                        <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                                            <div class="text-[10px] text-slate-500 font-bold uppercase mb-1">Sleep Score</div>
+                                            <div class="text-xl font-black text-emerald-500">88 <span class="text-[10px] font-normal text-slate-400">/100</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">2. Thermal Logging</div>
+                                    <div class="bg-rose-50 p-3 rounded-xl border border-rose-100 shadow-sm mb-3 flex items-center justify-between">
+                                        <div class="flex items-center gap-2"><i class="fa-solid fa-fire text-rose-500 text-lg"></i> <span class="text-sm font-bold text-rose-900">Sauna</span></div>
+                                        <div class="text-sm font-bold text-rose-700">15m 00s</div>
+                                    </div>
+                                    <div class="bg-cyan-50 p-3 rounded-xl border border-cyan-100 shadow-sm flex items-center justify-between">
+                                        <div class="flex items-center gap-2"><i class="fa-solid fa-snowflake text-cyan-500 text-lg"></i> <span class="text-sm font-bold text-cyan-900">Ice Bath</span></div>
+                                        <div class="text-sm font-bold text-cyan-700">03m 30s</div>
+                                    </div>
+                                </div>
+                                <div class="mockup-screen">
+                                    <div class="text-xs font-bold text-center text-slate-400 uppercase tracking-widest mb-4">3. Readiness</div>
+                                    <div class="w-32 h-32 mx-auto rounded-full border-8 border-emerald-400 flex flex-col items-center justify-center mb-4 shadow-inner bg-white">
+                                        <div class="text-2xl font-black text-slate-800">92%</div>
+                                        <div class="text-[10px] font-bold text-emerald-500 uppercase">Primed</div>
+                                    </div>
+                                    <div class="text-center text-xs text-slate-500 px-2">Your central nervous system is fully recovered. Cleared for high-intensity output.</div>
+                                </div>
+                            </div>
+                            <div class="screen-indicator"><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><span class="text-[8px] font-bold text-slate-500 ml-1 uppercase">Swipe</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= MAIN TAB 3: COMMERCIAL ================= -->
+        <section id="section-commercial" class="main-section hidden space-y-12">
+            <div class="text-center max-w-3xl mx-auto pb-4 pt-8">
+                <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">Enterprise Architecture</h2>
+                <p class="text-slate-600 text-lg">Transparent infrastructure designed for monetization and scale. Launch your own white-labeled ecosystem powered by SportConnect.</p>
+            </div>
+
+            <!-- Value Props for Commercial -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-neo flex items-start gap-4">
+                    <div class="w-10 h-10 bg-slate-50 border border-slate-100 text-slate-800 rounded-lg flex shrink-0 items-center justify-center"><i class="fa-solid fa-palette"></i></div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-lg">100% White Labeling</h4>
+                        <p class="text-sm text-slate-500 mt-1">Your brand, your crest, your colors. Deploy native apps to the store that look built entirely in-house.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-neo flex items-start gap-4">
+                    <div class="w-10 h-10 bg-slate-50 border border-slate-100 text-slate-800 rounded-lg flex shrink-0 items-center justify-center"><i class="fa-solid fa-bullhorn"></i></div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-lg">Advertising Engine</h4>
+                        <p class="text-sm text-slate-500 mt-1">Monetize your audience directly. Serve custom sponsor banners and local affiliate placements in-app.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Executive Control Panel Highlight (Required) -->
+            <div class="max-w-5xl mx-auto bg-white border border-slate-200 p-8 rounded-[2rem] shadow-neo-lg mt-12 flex flex-col md:flex-row gap-8 items-center">
+                <div class="flex-1 space-y-5">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200">
+                        <i class="fa-solid fa-server text-cyan-600"></i> Zero-Trust Infrastructure
+                    </div>
+                    <h3 class="text-3xl font-extrabold text-slate-900 leading-tight">
+                        Executive Control Panel
+                        <span class="block text-sm font-medium text-slate-500 mt-1 tracking-normal">(for large clubs and enterprises)</span>
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        A stark, high-density interface designed with a premium neo-bank aesthetic. Manage global operations across all 6 applications, view cross-jurisdictional telemetry, and strictly enforce Role-Based Access Control (RBAC) via our proprietary identity graph.
+                    </p>
+                    <button class="bg-slate-900 text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-800 transition-colors shadow-sm">Request Demo Access</button>
+                </div>
+                
+                <div class="flex-1 w-full">
+                    <!-- Stark White High-Density Card UI Mockup -->
+                    <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-neo p-5 space-y-4">
+                        <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                            <span class="text-xs font-bold text-slate-800 uppercase tracking-widest">System Telemetry</span>
+                            <span class="text-emerald-600 text-[10px] font-bold px-2 py-1 bg-emerald-50 rounded uppercase border border-emerald-100">Live</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white p-4 border border-slate-200 rounded-xl shadow-sm">
+                                <div class="text-[10px] text-slate-500 font-bold uppercase mb-1 flex items-center gap-1"><i class="fa-solid fa-shield-cat text-purple-500"></i> Police Vetting</div>
+                                <div class="text-xl font-black text-slate-900">98.4% <span class="text-[10px] text-emerald-600 ml-1"><i class="fa-solid fa-arrow-up"></i> 1.2%</span></div>
+                            </div>
+                            <div class="bg-white p-4 border border-slate-200 rounded-xl shadow-sm">
+                                <div class="text-[10px] text-slate-500 font-bold uppercase mb-1 flex items-center gap-1"><i class="fa-solid fa-globe text-blue-500"></i> Data Residency</div>
+                                <div class="text-sm font-black text-slate-900 mt-2">EU-West-1</div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 flex justify-between items-center text-xs shadow-sm">
+                            <span class="font-bold text-slate-700"><i class="fa-solid fa-lock text-slate-400 mr-1"></i> RBAC Exceptions</span>
+                            <button class="bg-rose-50 text-rose-600 border border-rose-100 px-3 py-1 rounded font-bold text-[10px] hover:bg-rose-100 transition-colors">Review (2)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Application JavaScript Logic -->
+    <script>
+        // Store current states
+        let currentMainTab = 'home';
+        let currentProductTab = 'match';
+
+        function switchMainTab(tabId, subProduct = null) {
+            currentMainTab = tabId;
+            
+            // Hide all main sections
+            document.querySelectorAll('.main-section').forEach(el => {
+                el.classList.remove('block');
+                el.classList.add('hidden');
+            });
+            
+            // Show target main section
+            const targetEl = document.getElementById('section-' + tabId);
+            if(targetEl) {
+                targetEl.classList.remove('hidden');
+                targetEl.classList.add('block');
+            }
+
+            // Update Top Nav Styles
+            document.querySelectorAll('.top-nav-btn').forEach(el => {
+                el.classList.remove('text-cyan-600', 'font-bold');
+                el.classList.add('text-slate-500', 'font-medium');
+            });
+            const activeNav = document.getElementById('nav-' + tabId);
+            if(activeNav) {
+                activeNav.classList.remove('text-slate-500', 'font-medium');
+                activeNav.classList.add('text-cyan-600', 'font-bold');
+            }
+
+            // Handle Products Special Logic
+            const subnavEl = document.getElementById('products-subnav');
+            if (tabId === 'products') {
+                subnavEl.classList.remove('hidden');
+                switchProductTab(subProduct || currentProductTab); // show specific product or default
+            } else {
+                subnavEl.classList.add('hidden');
+            }
+        }
+
+        function switchProductTab(productId) {
+            currentProductTab = productId;
+
+            // Hide all product views
+            document.querySelectorAll('.product-view').forEach(el => {
+                el.classList.remove('block');
+                el.classList.add('hidden');
+            });
+
+            // Show target product view
+            const targetEl = document.getElementById('view-' + productId);
+            if(targetEl) {
+                targetEl.classList.remove('hidden');
+                targetEl.classList.add('block');
+            }
+
+            // Update Sub-nav buttons
+            document.querySelectorAll('.sub-nav-btn').forEach(el => {
+                // Reset to default inactive style
+                el.classList.remove('bg-slate-900', 'text-white');
+                el.classList.add('bg-slate-100', 'text-slate-600');
+            });
+            
+            // Set active style
+            const activeSubNav = document.getElementById('subnav-' + productId);
+            if(activeSubNav) {
+                activeSubNav.classList.remove('bg-slate-100', 'text-slate-600');
+                activeSubNav.classList.add('bg-slate-900', 'text-white');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if(menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+
+        // Initialize state on load
+        document.addEventListener('DOMContentLoaded', () => {
+            switchMainTab('home');
+        });
+    </script>
+</body>
+</html>

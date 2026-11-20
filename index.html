@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#050911">
+  <meta name="description" content="SportConnect is a modular sports-technology platform delivering lightweight, hyper-focused mobile apps unified under one white-labeled enterprise architecture.">
+  <meta property="og:title" content="SportConnect | Modular Sports-Technology Platform">
+  <meta property="og:description" content="Six purpose-built sports apps connected by a single zero-trust, white-labeled enterprise architecture.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>SportConnect | Modular Sports-Technology Platform</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="tactical-grid-bg" aria-hidden="true"></div>
+
+  <!-- ================= TOP STICKY HEADER ================= -->
+  <header class="top-header">
+    <div class="top-header-inner">
+      <button type="button" class="brand-btn" data-jump-tab="home" aria-label="SportConnect Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="brand-logo" aria-hidden="true">
+          <defs>
+            <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#22d3ee" />
+              <stop offset="100%" stop-color="#10b981" />
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="55" r="38" fill="none" stroke="url(#brandGrad)" stroke-width="5" />
+          <path d="M50 17 L50 9 M42 9 L58 9 M42 13 L58 13" stroke="url(#brandGrad)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M77 28 L83 22 M79 20 L85 26" stroke="url(#brandGrad)" stroke-width="4" stroke-linecap="round"/>
+          <g stroke="url(#brandGrad)" stroke-width="2" fill="url(#brandGrad)">
+            <line x1="30" y1="40" x2="50" y2="35" />
+            <line x1="50" y1="35" x2="70" y2="45" />
+            <line x1="70" y1="45" x2="60" y2="70" />
+            <line x1="60" y1="70" x2="40" y2="75" />
+            <line x1="40" y1="75" x2="30" y2="40" />
+            <line x1="50" y1="35" x2="50" y2="55" />
+            <line x1="50" y1="55" x2="30" y2="60" />
+            <line x1="70" y1="45" x2="85" y2="45" />
+            <circle cx="30" cy="40" r="3" />
+            <circle cx="50" cy="35" r="3" />
+            <circle cx="70" cy="45" r="3" />
+            <circle cx="60" cy="70" r="3" />
+            <circle cx="40" cy="75" r="3" />
+            <circle cx="30" cy="60" r="3" />
+            <circle cx="50" cy="55" r="4.5" />
+            <line x1="50" y1="55" x2="50" y2="38" stroke-width="3.5" stroke-linecap="round" />
+            <line x1="50" y1="55" x2="63" y2="63" stroke-width="3.5" stroke-linecap="round" />
+          </g>
+        </svg>
+        <span class="brand-wordmark">Sport<span>Connect</span></span>
+      </button>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <button type="button" class="desktop-nav-btn is-active" data-nav-tab="home">Overview</button>
+        <button type="button" class="desktop-nav-btn" data-nav-tab="products">App Suite</button>
+        <button type="button" class="desktop-nav-btn" data-nav-tab="commercial">Commercial</button>
+        <button type="button" class="desktop-nav-btn" data-nav-tab="roadmap">Roadmap</button>
+        <button type="button" class="desktop-nav-btn" data-nav-tab="access">Early Access</button>
+      </nav>
+
+      <button type="button" class="header-cta" data-jump-tab="access">
+        <span>Get Access</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- Products Horizontal Sub-Nav (Visible on App Suite Tab) -->
+    <div id="products-subnav" class="products-subnav is-hidden">
+      <div class="products-subnav-inner hide-scrollbar" role="tablist" aria-label="SportConnect applications">
+        <button type="button" role="tab" class="subnav-pill is-active" data-product-tab="match" style="--pill-color: var(--accent-match);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+          Match Day
+        </button>
+        <button type="button" role="tab" class="subnav-pill" data-product-tab="pt" style="--pill-color: var(--accent-pt);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11M6.5 17.5h11M4 9v6M20 9v6M7 4v16M17 4v16"/></svg>
+          Personal Training
+        </button>
+        <button type="button" role="tab" class="subnav-pill" data-product-tab="tri" style="--pill-color: var(--accent-tri);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+          Triathlon
+        </button>
+        <button type="button" role="tab" class="subnav-pill" data-product-tab="academy" style="--pill-color: var(--accent-academy);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Academy
+        </button>
+        <button type="button" role="tab" class="subnav-pill" data-product-tab="safeguard" style="--pill-color: var(--accent-safeguard);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          Safeguard
+        </button>
+        <button type="button" role="tab" class="subnav-pill" data-product-tab="recovery" style="--pill-color: var(--accent-recovery);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Recovery
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="main-container">
+
+    <!-- ================================================================
+         TAB 1: OVERVIEW / HOME
+         ================================================================ -->
+    <section id="section-home" class="main-section is-active">
+      <div class="hero">
+        <div class="kicker-pill">
+          <span class="kicker-dot" aria-hidden="true"></span>
+          Modular Sports-Tech Platform
+        </div>
+        <h1 class="hero-title">
+          Scale Your Sports Ecosystem with <span class="gradient-text">Intelligent Micro-Apps</span>
+        </h1>
+        <p class="hero-desc">
+          Ditch bloated legacy software and scattered spreadsheets. SportConnect delivers purpose-built mobile apps for coaches, athletes, trainers, and race directors — unified under one zero-trust, white-labeled enterprise platform.
+        </p>
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" data-jump-tab="products" data-jump-product="match">
+            <span>Explore 6 Live Apps</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+          <button type="button" class="btn btn-secondary" data-jump-tab="commercial">
+            Commercial &amp; Enterprise
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Telemetry Strip -->
+      <div class="stats-strip">
+        <div class="stat-tile">
+          <div class="stat-value tabular-nums gradient-text">6 Apps</div>
+          <div class="stat-label">Phase 1 &amp; 2 modular suite</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-value tabular-nums">360° Sync</div>
+          <div class="stat-label">Creator to athlete loop</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-value tabular-nums">100%</div>
+          <div class="stat-label">White-label club branding</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-value tabular-nums">Zero-Trust</div>
+          <div class="stat-label">SSO &amp; RBAC compliance</div>
+        </div>
+      </div>
+
+      <!-- Why SportConnect (Value Prop) -->
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+          </div>
+          <h3>360° Connected Workflows</h3>
+          <p>Every app closes the loop between the <strong>creator</strong> (coach, trainer, race director) and the <strong>consumer</strong> (athlete, client, parent) with instant real-time sync.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon-badge icon-badge--emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h3>Lightweight Modularity</h3>
+          <p>Built for one-handed speed on the sidelines, in the gym, or on a race course. Users only see the exact tools they need — driving high adoption and zero clutter.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon-badge icon-badge--violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Enterprise Scalability</h3>
+          <p>Engineered from day one for Single Sign-On (SSO), cross-jurisdictional data residency (e.g. <code>EU-West-1</code>), and full club white-label deployment.</p>
+        </article>
+      </div>
+
+      <!-- Quick-Tap App Suite Launcher -->
+      <div class="block-spacer">
+        <div class="block-heading">
+          <div>
+            <h2>Core Product Suite</h2>
+            <p class="footer-meta">Tap any app to test its interactive mobile preview</p>
+          </div>
+          <button type="button" class="block-heading-link" data-jump-tab="products" data-jump-product="match">Open All →</button>
+        </div>
+
+        <div class="app-launcher-grid">
+          <button type="button" class="app-tile" style="--tile-accent: var(--accent-match);" data-jump-tab="products" data-jump-product="match">
+            <div class="app-tile-top">
+              <span class="app-tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></span>
+              <span class="app-tile-arrow">→</span>
+            </div>
+            <div class="app-tile-title">Match Day &amp; Tactics</div>
+            <div class="app-tile-sub">Formations, squad selection, fixtures &amp; live club rosters.</div>
+          </button>
+
+          <button type="button" class="app-tile" style="--tile-accent: var(--accent-pt);" data-jump-tab="products" data-jump-product="pt">
+            <div class="app-tile-top">
+              <span class="app-tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5h11M6.5 17.5h11M4 9v6M20 9v6M7 4v16M17 4v16"/></svg></span>
+              <span class="app-tile-arrow">→</span>
+            </div>
+            <div class="app-tile-title">Personal Training</div>
+            <div class="app-tile-sub">Visual workouts, daily macro logs &amp; live wearable HR zones.</div>
+          </button>
+
+          <button type="button" class="app-tile" style="--tile-accent: var(--accent-tri);" data-jump-tab="products" data-jump-product="tri">
+            <div class="app-tile-top">
+              <span class="app-tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+              <span class="app-tile-arrow">→</span>
+            </div>
+            <div class="app-tile-title">Triathlon Planner</div>
+            <div class="app-tile-sub">Swim/Bike/Run routing, hydration zones &amp; rapid First Aid dispatch.</div>
+          </button>
+
+          <button type="button" class="app-tile" style="--tile-accent: var(--accent-academy);" data-jump-tab="products" data-jump-product="academy">
+            <div class="app-tile-top">
+              <span class="app-tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+              <span class="app-tile-arrow">→</span>
+            </div>
+            <div class="app-tile-title">Academy Management</div>
+            <div class="app-tile-sub">Fair-play 5v5/6v6/7v7 grids, 50/50 swap alerts &amp; team sheets.</div>
+          </button>
+
+          <button type="button" class="app-tile" style="--tile-accent: var(--accent-safeguard);" data-jump-tab="products" data-jump-product="safeguard">
+            <div class="app-tile-top">
+              <span class="app-tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <span class="app-tile-arrow">→</span>
+            </div>
+            <div class="app-tile-title">Safeguard Compliance</div>
+            <div class="app-tile-sub">Automated Police &amp; Garda vetting, medical waivers &amp; consent.</div>
+          </button>
+
+          <button type="button" class="app-tile" style="--tile-accent: var(--accent-recovery);" data-jump-tab="products" data-jump-product="recovery">
+            <div class="app-tile-top">
+              <span class="app-tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+              <span class="app-tile-arrow">→</span>
+            </div>
+            <div class="app-tile-title">Advanced Recovery</div>
+            <div class="app-tile-sub">HRV, sleep cycles, sauna &amp; ice bath logging + readiness scores.</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Unified Platform Infrastructure -->
+      <div class="infra-panel">
+        <div class="kicker-pill">Core Platform Infrastructure</div>
+        <h2 style="margin-top: 0.75rem; font-size: clamp(1.4rem, 4.5vw, 2rem);">One Unified Architecture Under Every App</h2>
+        <div class="infra-grid">
+          <div class="infra-item">
+            <span class="infra-tag">Unified Identity</span>
+            <h3>Single Sign-On (SSO)</h3>
+            <p>One verified profile grants seamless access across every SportConnect app, automatically syncing club memberships and cross-app activity.</p>
+          </div>
+          <div class="infra-item">
+            <span class="infra-tag">Zero-Trust Security</span>
+            <h3>Vetting-Linked RBAC</h3>
+            <p>Volunteer coaches only access assigned rosters, and clearance ties directly to verified Police &amp; Garda Safeguard vetting status.</p>
+          </div>
+          <div class="infra-item">
+            <span class="infra-tag">Autonomous AI</span>
+            <h3>Agentic Tactical Engine</h3>
+            <p>Ingests opponent and performance data to recommend optimal tactical formations, expose vulnerabilities, and generate modular drills.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         TAB 2: PRODUCTS (6 INTERACTIVE MICRO-APPS)
+         ================================================================ -->
+    <section id="section-products" class="main-section" hidden>
+
+      <!-- PRODUCT 1: MATCH DAY & TACTICS -->
+      <article id="view-match" class="product-view is-active" style="--app-accent: var(--accent-match);">
+        <div class="product-layout">
+          <div class="product-info">
+            <div class="product-audience">Coaches • Tacticians • Club Managers</div>
+            <h2 class="product-title">Match Day &amp; Tactics</h2>
+            <p class="product-desc">
+              The tactician's sideline command center. Design formations powered by our <strong>Agentic Tactical Engine</strong>, select match-day squads, schedule fixtures, and synchronize coaching staff and club rosters in real time.
+            </p>
+            <div class="workflow-box">
+              <div class="workflow-label"><span>360° Match Day Workflow</span><span>Real-Time Sync</span></div>
+              <div class="workflow-steps">
+                <div class="workflow-step"><span class="workflow-num">01</span><h4>Setup Tactics</h4><p>Design formations &amp; AI counter-plays.</p></div>
+                <div class="workflow-step"><span class="workflow-num">02</span><h4>Schedule</h4><p>Push fixtures directly to squad phones.</p></div>
+                <div class="workflow-step"><span class="workflow-num">03</span><h4>Coordinate</h4><p>Live player availability &amp; staff roles.</p></div>
+                <div class="workflow-step"><span class="workflow-num">04</span><h4>Manage</h4><p>Live club roster &amp; match-day ops.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-stage">
+            <div class="phone-aura" aria-hidden="true"></div>
+            <div class="phone-device">
+              <div class="phone-screen-shell">
+                <div class="phone-statusbar">
+                  <span class="tabular-nums">09:41</span>
+                  <div class="phone-island" aria-hidden="true"></div>
+                  <span>5G • 96%</span>
+                </div>
+
+                <div class="phone-carousel hide-scrollbar" aria-label="Match Day app screens">
+                  <!-- Slide 1 -->
+                  <div class="phone-slide">
+                    <div class="slide-kicker">1. Interactive Formations</div>
+                    <div class="mini-chip-group">
+                      <button type="button" class="mini-chip is-active" data-formation="4-3-3">4-3-3</button>
+                      <button type="button" class="mini-chip" data-formation="3-5-2">3-5-2</button>
+                      <button type="button" class="mini-chip" data-formation="4-4-2">4-4-2</button>
+                    </div>
+                    <div id="tactical-pitch" class="pitch-box" aria-label="Tactical formation board">
+                      <div class="pitch-midline"></div>
+                      <div class="pitch-circle"></div>
+                    </div>
+                    <div class="mini-card">
+                      <div id="formation-ai-note" class="mini-sub" style="color: var(--text-secondary);">
+                        AI Tactical Engine: High press exploits opponent wing-backs (+14% xG).
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Slide 2 -->
+                  <div class="phone-slide">
+                    <div class="slide-kicker">2. Fixture Scheduling</div>
+                    <div class="mini-card mini-row">
+                      <div>
+                        <div class="mini-title">vs Rovers FC</div>
+                        <div class="mini-sub">Sat, 14:00 • Pitch 1 (Home)</div>
+                      </div>
+                      <span class="mini-badge mini-badge--emerald">18 Ready</span>
+                    </div>
+                    <div class="mini-card mini-row">
+                      <div>
+                        <div class="mini-title">Tactical Session</div>
+                        <div class="mini-sub">Tue, 18:30 • Set Pieces</div>
+                      </div>
+                      <span class="mini-badge">Confirmed</span>
+                    </div>
+                    <div class="mini-card mini-row">
+                      <div>
+                        <div class="mini-title">Cup Quarter-Final</div>
+                        <div class="mini-sub">Sat Next • Away Travel</div>
+                      </div>
+                      <span class="mini-badge mini-badge--amber">Pending</span>
+                    </div>
+                  </div>
+
+                  <!-- Slide 3 -->
+                  <div class="phone-slide">
+                    <div class="slide-kicker">3. Live Club Roster</div>
+                    <div class="mini-card mini-row">
+                      <div><div class="mini-title">J. Smith (C)</div><div class="mini-sub">CM • Match Fit • Vetted</div></div>
+                      <span class="mini-badge mini-badge--emerald">Starting</span>
+                    </div>
+                    <div class="mini-card mini-row">
+                      <div><div class="mini-title">M. Davis</div><div class="mini-sub">CB • 94% Readiness</div></div>
+                      <span class="mini-badge mini-badge--emerald">Starting</span>
+                    </div>
+                    <div class="mini-card mini-row">
+                      <div><div class="mini-title">L. Johnson</div><div class="mini-sub">ST • 6 Goals (Last 5)</div></div>
+                      <span class="mini-badge">Impact Sub</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="phone-controls">
+                  <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Previous screen">‹</button>
+                  <div class="carousel-dots">
+                    <button type="button" class="carousel-dot is-active" aria-label="Slide 1"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 2"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 3"></button>
+                  </div>
+                  <button type="button" class="carousel-arrow" data-carousel-next aria-label="Next screen">›</button>
+                </div>
+              </div>
+            </div>
+            <div class="phone-hint">Tap formations or swipe screens inside device</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 2: PERSONAL TRAINING -->
+      <article id="view-pt" class="product-view" style="--app-accent: var(--accent-pt);" hidden>
+        <div class="product-layout">
+          <div class="product-info">
+            <div class="product-audience">Personal Trainers • Athletes • Clients</div>
+            <h2 class="product-title">Personal Training</h2>
+            <p class="product-desc">
+              Close the coaching gap between gym sessions. Schedule sessions, share <strong>visual routines with form demonstrations</strong>, capture daily nutrition &amp; macro logs, and stream live wearable heart rate zones straight to the trainer's dashboard.
+            </p>
+            <div class="workflow-box">
+              <div class="workflow-label"><span>360° PT Workflow</span><span>Wearable Linked</span></div>
+              <div class="workflow-steps">
+                <div class="workflow-step"><span class="workflow-num">01</span><h4>Routines</h4><p>Share visual demo workouts &amp; tempo cues.</p></div>
+                <div class="workflow-step"><span class="workflow-num">02</span><h4>Nutrition</h4><p>Clients log daily kcal &amp; macro targets.</p></div>
+                <div class="workflow-step"><span class="workflow-num">03</span><h4>Wearables</h4><p>Sync live HR zones from watches/straps.</p></div>
+                <div class="workflow-step"><span class="workflow-num">04</span><h4>Progress</h4><p>Track strength &amp; adherence trends.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-stage">
+            <div class="phone-aura" aria-hidden="true"></div>
+            <div class="phone-device">
+              <div class="phone-screen-shell">
+                <div class="phone-statusbar">
+                  <span class="tabular-nums">09:41</span>
+                  <div class="phone-island" aria-hidden="true"></div>
+                  <span>5G • 92%</span>
+                </div>
+
+                <div class="phone-carousel hide-scrollbar" aria-label="Personal Training app screens">
+                  <div class="phone-slide">
+                    <div class="slide-kicker">1. Visual Routines</div>
+                    <div class="mini-card mini-row">
+                      <div>
+                        <div class="mini-title">Trap-Bar Deadlifts</div>
+                        <div class="mini-sub">4 sets × 8 reps • RPE 8 • Form Clip</div>
+                      </div>
+                      <span class="mini-badge mini-badge--amber">▶ Demo</span>
+                    </div>
+                    <div class="mini-card mini-row">
+                      <div>
+                        <div class="mini-title">Incline Dumbbell Press</div>
+                        <div class="mini-sub">3 sets × 10 reps • 90s rest</div>
+                      </div>
+                      <span class="mini-badge mini-badge--amber">▶ Demo</span>
+                    </div>
+                    <div class="mini-card mini-row">
+                      <div>
+                        <div class="mini-title">Bulgarian Split Squats</div>
+                        <div class="mini-sub">3 sets × 12/leg • Tempo 3-1-1</div>
+                      </div>
+                      <span class="mini-badge">Queued</span>
+                    </div>
+                  </div>
+
+                  <div class="phone-slide">
+                    <div class="slide-kicker">2. Daily Macros</div>
+                    <div class="metric-ring" style="--ring-color: #fb923c; --ring-pct: 78%;">
+                      <div class="metric-ring-val tabular-nums">1,850</div>
+                      <div class="metric-ring-sub">of 2,350 kcal</div>
+                    </div>
+                    <div class="telemetry-grid" style="grid-template-columns: repeat(3, 1fr); gap: 0.45rem;">
+                      <div class="mini-card" style="text-align: center; padding: 0.55rem 0.35rem;">
+                        <div class="mini-title tabular-nums">142g</div>
+                        <div class="mini-sub">Protein</div>
+                      </div>
+                      <div class="mini-card" style="text-align: center; padding: 0.55rem 0.35rem;">
+                        <div class="mini-title tabular-nums">184g</div>
+                        <div class="mini-sub">Carbs</div>
+                      </div>
+                      <div class="mini-card" style="text-align: center; padding: 0.55rem 0.35rem;">
+                        <div class="mini-title tabular-nums">58g</div>
+                        <div class="mini-sub">Fats</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="phone-slide">
+                    <div class="slide-kicker">3. Live Wearable HR</div>
+                    <div class="mini-card" style="text-align: center; border-color: rgba(251, 113, 133, 0.35);">
+                      <div class="mini-sub" style="color: var(--accent-recovery); font-weight: 700;">LIVE TELEMETRY</div>
+                      <div class="tabular-nums" style="font-family: var(--font-display); font-size: 2.35rem; font-weight: 700; margin: 0.2rem 0;">
+                        146 <span style="font-size: 0.85rem; color: var(--text-muted);">BPM</span>
+                      </div>
+                      <span class="mini-badge mini-badge--rose">Zone 3 • Aerobic Engine</span>
+                    </div>
+                    <div class="hr-bars" aria-hidden="true">
+                      <div class="hr-bar" style="height: 32%;"></div>
+                      <div class="hr-bar" style="height: 50%;"></div>
+                      <div class="hr-bar hr-bar--hot" style="height: 76%;"></div>
+                      <div class="hr-bar hr-bar--hot" style="height: 94%;"></div>
+                      <div class="hr-bar hr-bar--hot" style="height: 82%;"></div>
+                      <div class="hr-bar" style="height: 45%;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="phone-controls">
+                  <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Previous screen">‹</button>
+                  <div class="carousel-dots">
+                    <button type="button" class="carousel-dot is-active" aria-label="Slide 1"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 2"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 3"></button>
+                  </div>
+                  <button type="button" class="carousel-arrow" data-carousel-next aria-label="Next screen">›</button>
+                </div>
+              </div>
+            </div>
+            <div class="phone-hint">Swipe or tap arrows to inspect PT screens</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 3: TRIATHLON PLANNER -->
+      <article id="view-tri" class="product-view" style="--app-accent: var(--accent-tri);" hidden>
+        <div class="product-layout">
+          <div class="product-info">
+            <div class="product-audience">Race Directors • Endurance Athletes</div>
+            <h2 class="product-title">Triathlon Planner</h2>
+            <p class="product-desc">
+              End-to-end endurance race orchestration. Map <strong>Swim, Bike, and Run courses</strong>, strategically place hydration &amp; drink zones, mark safe stop points, and coordinate rapid First Aid &amp; medic deployment across every sector.
+            </p>
+            <div class="workflow-box">
+              <div class="workflow-label"><span>360° Race Workflow</span><span>Safety First</span></div>
+              <div class="workflow-steps">
+                <div class="workflow-step"><span class="workflow-num">01</span><h4>Map Routes</h4><p>Plot Swim, Bike &amp; Run GPS legs.</p></div>
+                <div class="workflow-step"><span class="workflow-num">02</span><h4>Drink Zones</h4><p>Coordinate hydration &amp; gel stations.</p></div>
+                <div class="workflow-step"><span class="workflow-num">03</span><h4>Stop Points</h4><p>Define safe pull-off &amp; marshal spots.</p></div>
+                <div class="workflow-step"><span class="workflow-num">04</span><h4>First Aid</h4><p>One-tap rapid medic sector routing.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-stage">
+            <div class="phone-aura" aria-hidden="true"></div>
+            <div class="phone-device">
+              <div class="phone-screen-shell">
+                <div class="phone-statusbar">
+                  <span class="tabular-nums">09:41</span>
+                  <div class="phone-island" aria-hidden="true"></div>
+                  <span>GPS • 98%</span>
+                </div>
+
+                <div class="phone-carousel hide-scrollbar" aria-label="Triathlon Planner app screens">
+                  <div class="phone-slide">
+                    <div class="slide-kicker">1. Multi-Leg Course Map</div>
+                    <div class="mini-card" style="padding: 0; overflow: hidden; height: 170px; position: relative; background: #0a1729;">
+                      <svg viewBox="0 0 260 170" width="100%" height="100%" aria-hidden="true">
+                        <defs>
+                          <linearGradient id="routeGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#38bdf8" />
+                            <stop offset="50%" stop-color="#22d3ee" />
+                            <stop offset="100%" stop-color="#34d399" />
+                          </linearGradient>
+                        </defs>
+                        <path d="M24 140 C 65 95, 90 120, 130 85 S 195 45, 236 28" fill="none" stroke="url(#routeGrad)" stroke-width="4" stroke-dasharray="6 4" stroke-linecap="round"/>
+                        <circle cx="24" cy="140" r="7" fill="#38bdf8" />
+                        <circle cx="130" cy="85" r="7" fill="#fb923c" />
+                        <circle cx="236" cy="28" r="7" fill="#34d399" />
+                      </svg>
+                      <span class="mini-badge" style="position: absolute; top: 10px; left: 10px;">70.3 Course Live</span>
+                    </div>
+                    <div class="mini-card mini-row">
+                      <div><div class="mini-title">Swim → Bike → Run</div><div class="mini-sub">1.9km • 90km • 21.1km</div></div>
+                      <span class="mini-badge mini-badge--emerald">Clear</span>
+                    </div>
+                  </div>
+
+                  <div class="phone-slide">
+                    <div class="slide-kicker">2. Hydration &amp; Safe Stops</div>
+                    <div class="mini-card" style="border-left: 3px solid #38bdf8;">
+                      <div class="mini-row">
+                        <div class="mini-title">Hydration Alpha</div>
+                        <span class="mini-badge">KM 15.2</span>
+                      </div>
+                      <div class="mini-sub" style="margin-top: 0.2rem;">Electrolytes &amp; Water • 6 Volunteers</div>
+                    </div>
+                    <div class="mini-card" style="border-left: 3px solid #fb923c;">
+                      <div class="mini-row">
+                        <div class="mini-title">Safe Stop Point 2</div>
+                        <span class="mini-badge mini-badge--amber">KM 40.0</span>
+                      </div>
+                      <div class="mini-sub" style="margin-top: 0.2rem;">Bike Mechanic + Shaded Recovery Tent</div>
+                    </div>
+                  </div>
+
+                  <div class="phone-slide">
+                    <div class="slide-kicker">3. First Aid Dispatch</div>
+                    <div class="mini-card" style="border-color: rgba(251, 113, 133, 0.35);">
+                      <div class="mini-row" style="margin-bottom: 0.65rem;">
+                        <div>
+                          <div class="mini-title">Medic Unit B (Moto)</div>
+                          <div id="medic-status" class="mini-sub">On Standby • Sector 2 Base</div>
+                        </div>
+                        <span class="mini-badge mini-badge--rose">EMS</span>
+                      </div>
+                      <button type="button" id="medic-deploy-btn" class="mini-action-btn" style="--app-accent: #fb7185; color: #fff;">
+                        Deploy to Sector 4
+                      </button>
+                    </div>
+                    <div class="mini-card">
+                      <div class="mini-title">Nearest Access Road</div>
+                      <div class="mini-sub">Coast Gate East — Direct Ambulance Corridor</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="phone-controls">
+                  <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Previous screen">‹</button>
+                  <div class="carousel-dots">
+                    <button type="button" class="carousel-dot is-active" aria-label="Slide 1"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 2"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 3"></button>
+                  </div>
+                  <button type="button" class="carousel-arrow" data-carousel-next aria-label="Next screen">›</button>
+                </div>
+              </div>
+            </div>
+            <div class="phone-hint">Swipe to Slide 3 to test live Medic Dispatch</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 4: ACADEMY MANAGEMENT -->
+      <article id="view-academy" class="product-view" style="--app-accent: var(--accent-academy);" hidden>
+        <div class="product-layout">
+          <div class="product-info">
+            <div class="product-audience">Grassroots Clubs • Youth Coaches • Parents</div>
+            <h2 class="product-title">Academy Management</h2>
+            <p class="product-desc">
+              Purpose-built for fair-play youth development. Algorithmic <strong>player rotation grids across 5v5, 6v6, and 7v7</strong> guarantee equal playing time with automated <strong>mid-quarter 50/50 swap alerts</strong> and shareable visual team sheet image exports.
+            </p>
+            <div class="workflow-box">
+              <div class="workflow-label"><span>360° Academy Workflow</span><span>Fair-Play Engine</span></div>
+              <div class="workflow-steps">
+                <div class="workflow-step"><span class="workflow-num">01</span><h4>Fair Grids</h4><p>Auto-balance 5v5, 6v6 &amp; 7v7 lineups.</p></div>
+                <div class="workflow-step"><span class="workflow-num">02</span><h4>Swap Alerts</h4><p>Haptic buzz at mid-quarter mark.</p></div>
+                <div class="workflow-step"><span class="workflow-num">03</span><h4>50/50 Splits</h4><p>Guaranteed equal minutes per child.</p></div>
+                <div class="workflow-step"><span class="workflow-num">04</span><h4>Exports</h4><p>One-tap visual team sheet PNGs.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-stage">
+            <div class="phone-aura" aria-hidden="true"></div>
+            <div class="phone-device">
+              <div class="phone-screen-shell">
+                <div class="phone-statusbar">
+                  <span class="tabular-nums">09:41</span>
+                  <div class="phone-island" aria-hidden="true"></div>
+                  <span>5G • 94%</span>
+                </div>
+
+                <div class="phone-carousel hide-scrollbar" aria-label="Academy Management app screens">
+                  <div class="phone-slide">
+                    <div class="slide-kicker">1. Fair Rotation Grid</div>
+                    <div class="mini-chip-group">
+                      <button type="button" class="mini-chip is-active" data-academy-format="5v5">5v5</button>
+                      <button type="button" class="mini-chip" data-academy-format="6v6">6v6</button>
+                      <button type="button" class="mini-chip" data-academy-format="7v7">7v7</button>
+                    </div>
+                    <table class="rot-table">
+                      <thead>
+                        <tr><th>Player</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>Leo</td><td class="rot-on">ON</td><td class="rot-sub">SUB</td><td class="rot-on">ON</td><td class="rot-on">ON</td></tr>
+                        <tr><td>Mia</td><td class="rot-sub">SUB</td><td class="rot-on">ON</td><td class="rot-on">ON</td><td class="rot-on">ON</td></tr>
+                        <tr><td>Noah</td><td class="rot-on">ON</td><td class="rot-on">ON</td><td class="rot-sub">SUB</td><td class="rot-on">ON</td></tr>
+                        <tr><td>Ava</td><td class="rot-on">ON</td><td class="rot-on">ON</td><td class="rot-on">ON</td><td class="rot-sub">SUB</td></tr>
+                      </tbody>
+                    </table>
+                    <div id="academy-split-note" class="mini-sub" style="text-align: center;">
+                      5v5 Fair Grid • 8 squad players • Guaranteed 62.5% min play time.
+                    </div>
+                  </div>
+
+                  <div class="phone-slide">
+                    <div class="slide-kicker">2. Mid-Quarter Swap Alert</div>
+                    <div class="mini-card" style="text-align: center; border-color: rgba(251, 146, 60, 0.45); background: linear-gradient(180deg, rgba(251, 146, 60, 0.14), rgba(15, 23, 42, 0.92));">
+                      <div class="mini-badge mini-badge--amber" style="margin-bottom: 0.5rem;">07:30 • MID-QUARTER</div>
+                      <div class="mini-title" style="font-size: 1.05rem;">50/50 Swap Required</div>
+                      <div class="mini-sub" style="margin-top: 0.35rem;">Sub ON: Mia, Sam &nbsp;|&nbsp; Sub OFF: Leo, Finn</div>
+                    </div>
+                    <div class="mini-card mini-row">
+                      <div><div class="mini-title">Minutes Parity</div><div class="mini-sub">Variance across squad</div></div>
+                      <span class="mini-badge mini-badge--emerald">±0.5 min</span>
+                    </div>
+                  </div>
+
+                  <div class="phone-slide">
+                    <div class="slide-kicker">3. Team Sheet Export</div>
+                    <div class="mini-card" style="text-align: center;">
+                      <div style="border: 1px dashed rgba(52, 211, 153, 0.45); border-radius: 0.65rem; padding: 1.1rem 0.75rem; margin-bottom: 0.75rem; background: rgba(16, 185, 129, 0.06);">
+                        <div class="mini-title">U11 Saturday Match Sheet</div>
+                        <div class="mini-sub" style="margin-top: 0.25rem;">Club Crest • Starting Grid • Kickoff 10:00</div>
+                      </div>
+                      <button type="button" id="academy-export-btn" class="mini-action-btn">Export Visual Team Sheet</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="phone-controls">
+                  <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Previous screen">‹</button>
+                  <div class="carousel-dots">
+                    <button type="button" class="carousel-dot is-active" aria-label="Slide 1"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 2"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 3"></button>
+                  </div>
+                  <button type="button" class="carousel-arrow" data-carousel-next aria-label="Next screen">›</button>
+                </div>
+              </div>
+            </div>
+            <div class="phone-hint">Tap 5v5 / 6v6 / 7v7 or swipe to export team sheet</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 5: SAFEGUARD COMPLIANCE -->
+      <article id="view-safeguard" class="product-view" style="--app-accent: var(--accent-safeguard);" hidden>
+        <div class="product-layout">
+          <div class="product-info">
+            <div class="product-audience">Club Secretaries • Welfare Officers • Executives</div>
+            <h2 class="product-title">Safeguard Compliance</h2>
+            <p class="product-desc">
+              A zero-trust <strong>"Know Your Coach / Athlete"</strong> compliance control plane. Automate <strong>Police &amp; Garda Vetting</strong> renewals, track safeguarding certifications, and collect digital medical waivers &amp; parental consent before anyone steps onto the pitch.
+            </p>
+            <div class="workflow-box">
+              <div class="workflow-label"><span>360° Compliance Workflow</span><span>Zero-Trust RBAC</span></div>
+              <div class="workflow-steps">
+                <div class="workflow-step"><span class="workflow-num">01</span><h4>Identity</h4><p>Coaches upload IDs via unified SSO.</p></div>
+                <div class="workflow-step"><span class="workflow-num">02</span><h4>Vetting</h4><p>Automated Police &amp; Garda checks.</p></div>
+                <div class="workflow-step"><span class="workflow-num">03</span><h4>Waivers</h4><p>Digital medical &amp; parental consent.</p></div>
+                <div class="workflow-step"><span class="workflow-num">04</span><h4>Clearance</h4><p>Roster access tied to verified status.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-stage">
+            <div class="phone-aura" aria-hidden="true"></div>
+            <div class="phone-device">
+              <div class="phone-screen-shell">
+                <div class="phone-statusbar">
+                  <span class="tabular-nums">09:41</span>
+                  <div class="phone-island" aria-hidden="true"></div>
+                  <span>5G • 95%</span>
+                </div>
+
+                <div class="phone-carousel hide-scrollbar" aria-label="Safeguard Compliance app screens">
+                  <div class="phone-slide">
+                    <div class="slide-kicker">1. Vetting Verification</div>
+                    <div class="mini-card" style="text-align: center; border-color: rgba(16, 185, 129, 0.35);">
+                      <div style="width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 0.6rem; background: rgba(16, 185, 129, 0.16); color: #34d399; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.25rem;">✓</div>
+                      <div class="mini-title">Coach Sarah Jenkins</div>
+                      <div style="margin: 0.35rem 0;"><span class="mini-badge mini-badge--emerald">Police &amp; Garda Vetted</span></div>
+                      <div class="mini-sub">Safeguarding Level 2 • Valid until Oct 2028</div>
+                    </div>
+                  </div>
+
+                  <div class="phone-slide">
+                    <div class="slide-kicker">2. Digital Waivers</div>
+                    <div class="mini-card mini-row">
+                      <div>
+                        <div class="mini-title">Medical &amp; Emergency Waiver</div>
+                        <div class="mini-sub">Signed digitally by Parent/Guardian</div>
+                      </div>
+                      <span class="mini-badge mini-badge--emerald">Signed</span>
+                    </div>
+                    <div class="mini-card mini-row" style="border-color: rgba(251, 146, 60, 0.35);">
+                      <div>
+                        <div class="mini-title">Media &amp; Photo Consent</div>
+                        <div class="mini-sub">Auto-reminder sent 2h ago</div>
+                      </div>
+                      <span class="mini-badge mini-badge--amber">Pending</span>
+                    </div>
+                  </div>
+
+                  <div class="phone-slide">
+                    <div class="slide-kicker">3. Zero-Trust Roster Gate</div>
+                    <div class="mini-card" style="border-color: rgba(167, 139, 250, 0.38);">
+                      <div class="mini-row" style="margin-bottom: 0.7rem;">
+                        <div>
+                          <div class="mini-title">U14 Roster Access</div>
+                          <div class="mini-sub">RBAC Vetting Enforcement</div>
+                        </div>
+                        <button type="button" id="safeguard-toggle" class="toggle-switch" aria-pressed="true" aria-label="Toggle zero-trust roster access"></button>
+                      </div>
+                      <div id="safeguard-toggle-msg" class="mini-sub" style="line-height: 1.45;">
+                        Roster access unlocked automatically — Police &amp; Garda Vetting verified through Oct 2028.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="phone-controls">
+                  <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Previous screen">‹</button>
+                  <div class="carousel-dots">
+                    <button type="button" class="carousel-dot is-active" aria-label="Slide 1"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 2"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 3"></button>
+                  </div>
+                  <button type="button" class="carousel-arrow" data-carousel-next aria-label="Next screen">›</button>
+                </div>
+              </div>
+            </div>
+            <div class="phone-hint">Swipe to Slide 3 to toggle Zero-Trust RBAC access</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 6: ADVANCED RECOVERY -->
+      <article id="view-recovery" class="product-view" style="--app-accent: var(--accent-recovery);" hidden>
+        <div class="product-layout">
+          <div class="product-info">
+            <div class="product-audience">Elite &amp; Amateur Athletes • Sports Scientists</div>
+            <h2 class="product-title">Advanced Recovery</h2>
+            <p class="product-desc">
+              Optimize the physiological rebuild phase. Combine wearable biometrics (<strong>HRV &amp; sleep cycles</strong>) with contrast thermal therapy logging — tracking exact <strong>high-temp sauna and ice bath exposure times</strong> to calculate daily readiness scores.
+            </p>
+            <div class="workflow-box">
+              <div class="workflow-label"><span>360° Recovery Workflow</span><span>Biometric Engine</span></div>
+              <div class="workflow-steps">
+                <div class="workflow-step"><span class="workflow-num">01</span><h4>Biometrics</h4><p>Ingest overnight HRV &amp; sleep stages.</p></div>
+                <div class="workflow-step"><span class="workflow-num">02</span><h4>Heat Phase</h4><p>Log high-temp sauna exposure.</p></div>
+                <div class="workflow-step"><span class="workflow-num">03</span><h4>Cold Phase</h4><p>Log ice bath immersion times.</p></div>
+                <div class="workflow-step"><span class="workflow-num">04</span><h4>Readiness</h4><p>Daily output &amp; load clearance.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-stage">
+            <div class="phone-aura" aria-hidden="true"></div>
+            <div class="phone-device">
+              <div class="phone-screen-shell">
+                <div class="phone-statusbar">
+                  <span class="tabular-nums">09:41</span>
+                  <div class="phone-island" aria-hidden="true"></div>
+                  <span>5G • 91%</span>
+                </div>
+
+                <div class="phone-carousel hide-scrollbar" aria-label="Advanced Recovery app screens">
+                  <div class="phone-slide">
+                    <div class="slide-kicker">1. Overnight Biometrics</div>
+                    <div class="telemetry-grid">
+                      <div class="mini-card">
+                        <div class="mini-sub">HRV RMSSD</div>
+                        <div class="tabular-nums" style="font-family: var(--font-display); font-size: 1.45rem; font-weight: 700;">68 <span style="font-size: 0.7rem; color: var(--text-muted);">ms</span></div>
+                        <div class="mini-sub" style="color: var(--brand-emerald-bright);">+9% vs baseline</div>
+                      </div>
+                      <div class="mini-card">
+                        <div class="mini-sub">Sleep Score</div>
+                        <div class="tabular-nums" style="font-family: var(--font-display); font-size: 1.45rem; font-weight: 700; color: var(--brand-emerald-bright);">88 <span style="font-size: 0.7rem; color: var(--text-muted);">/100</span></div>
+                        <div class="mini-sub">7h 54m • 24% Deep</div>
+                      </div>
+                    </div>
+                    <div class="mini-card mini-row">
+                      <div><div class="mini-title">Resting Heart Rate</div><div class="mini-sub">Apple Watch / Garmin Sync</div></div>
+                      <span class="mini-badge mini-badge--emerald tabular-nums">47 bpm</span>
+                    </div>
+                  </div>
+
+                  <div class="phone-slide">
+                    <div class="slide-kicker">2. Contrast Thermal Log</div>
+                    <div class="mini-card" style="border-color: rgba(251, 113, 133, 0.35);">
+                      <div class="mini-row">
+                        <div><div class="mini-title">High-Temp Sauna (92°C)</div><div class="mini-sub">Tap to log +5 min round</div></div>
+                        <div id="sauna-time" class="mini-title tabular-nums" style="color: var(--accent-recovery);">15m 00s</div>
+                      </div>
+                      <button type="button" id="log-sauna-btn" class="mini-action-btn" style="margin-top: 0.55rem; --app-accent: #fb7185; color: #fff;">+ Log 5m Sauna</button>
+                    </div>
+                    <div class="mini-card" style="border-color: rgba(34, 211, 238, 0.35);">
+                      <div class="mini-row">
+                        <div><div class="mini-title">Ice Bath Plunge (6°C)</div><div class="mini-sub">Tap to log +30s immersion</div></div>
+                        <div id="ice-time" class="mini-title tabular-nums" style="color: var(--brand-cyan);">03m 30s</div>
+                      </div>
+                      <button type="button" id="log-ice-btn" class="mini-action-btn" style="margin-top: 0.55rem; --app-accent: #22d3ee;">+ Log 30s Plunge</button>
+                    </div>
+                  </div>
+
+                  <div class="phone-slide">
+                    <div class="slide-kicker">3. Daily Readiness</div>
+                    <div class="metric-ring" style="--ring-color: #34d399; --ring-pct: 92%;">
+                      <div class="metric-ring-val tabular-nums">92%</div>
+                      <div class="metric-ring-sub" style="color: var(--brand-emerald-bright);">Primed</div>
+                    </div>
+                    <div class="mini-card" style="text-align: center;">
+                      <div class="mini-sub" style="color: var(--text-secondary);">Central nervous system fully rebuilt. Cleared for peak match-day or high-intensity output.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="phone-controls">
+                  <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Previous screen">‹</button>
+                  <div class="carousel-dots">
+                    <button type="button" class="carousel-dot is-active" aria-label="Slide 1"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 2"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 3"></button>
+                  </div>
+                  <button type="button" class="carousel-arrow" data-carousel-next aria-label="Next screen">›</button>
+                </div>
+              </div>
+            </div>
+            <div class="phone-hint">Swipe to Slide 2 to log Sauna &amp; Ice Bath exposure</div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ================================================================
+         TAB 3: COMMERCIAL & EXECUTIVE CONTROL PANEL
+         ================================================================ -->
+    <section id="section-commercial" class="main-section" hidden>
+      <div class="section-header">
+        <div class="kicker-pill">B2B / B2B2C Monetization</div>
+        <h2 class="section-title">Turn Club Software Into a <span class="gradient-text">Revenue Engine</span></h2>
+        <p class="section-subtitle">
+          SportConnect is engineered for transparent enterprise scaling — giving solo trainers, grassroots clubs, and national federations flexible subscriptions, white-labeling, sponsor monetization, and native fee collection.
+        </p>
+      </div>
+
+      <!-- 4 Commercial Pillars from Business Plan -->
+      <div class="grid-2">
+        <article class="card">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>
+          </div>
+          <h3>1. Tiered SaaS Subscriptions</h3>
+          <p>Flexible per-app or full-suite pricing scaled by active members — growing seamlessly from solo personal trainers to grassroots clubs and multi-jurisdictional national federations.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon-badge icon-badge--emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22a10 10 0 1 1 10-10c0 2.2-1.5 3-3 3h-1.8a1.5 1.5 0 0 0-1.1 2.5c.6.7.9 1.6.9 2.5a2 2 0 0 1-2 2z"/></svg>
+          </div>
+          <h3>2. 100% White-Labeling</h3>
+          <p>Premium tiers let clubs and enterprises completely re-skin the apps with their own crests, club colorways, and native iOS/Android App Store presence.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon-badge icon-badge--amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+          </div>
+          <h3>3. Integrated Advertising Engine</h3>
+          <p>Monetize active athletic communities directly inside the apps with local club sponsor banners, partner perks, and targeted affiliate placements.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon-badge icon-badge--violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <h3>4. Automated E-Commerce &amp; Fees</h3>
+          <p>Built-in recurring billing for club membership dues, personal training packages, tournament entry fees, and facility or pitch rentals.</p>
+        </article>
+      </div>
+
+      <!-- Interactive White-Label Live Previewer -->
+      <div class="wl-preview-card">
+        <div class="mini-row" style="flex-wrap: wrap;">
+          <div>
+            <div class="kicker-pill" style="margin-bottom: 0.5rem;">Interactive White-Label Preview</div>
+            <h3 style="font-size: 1.35rem;">Re-Skin SportConnect in Seconds</h3>
+            <p class="footer-meta" style="margin-top: 0.25rem;">Tap a club identity below to preview dynamic white-label theming.</p>
+          </div>
+        </div>
+        <div class="wl-swatches">
+          <button type="button" class="wl-swatch-btn is-active" data-wl-theme="default">
+            <span class="swatch-dot" style="background: linear-gradient(135deg, #22d3ee, #10b981);"></span> SportConnect
+          </button>
+          <button type="button" class="wl-swatch-btn" data-wl-theme="rovers">
+            <span class="swatch-dot" style="background: linear-gradient(135deg, #10b981, #a3e635);"></span> Emerald Rovers
+          </button>
+          <button type="button" class="wl-swatch-btn" data-wl-theme="royal">
+            <span class="swatch-dot" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);"></span> Royal Athletic
+          </button>
+          <button type="button" class="wl-swatch-btn" data-wl-theme="crimson">
+            <span class="swatch-dot" style="background: linear-gradient(135deg, #f43f5e, #fb923c);"></span> Crimson United
+          </button>
+        </div>
+        <div class="wl-mockup-bar">
+          <div class="wl-club-badge">
+            <div id="wl-club-crest" class="wl-club-crest">SC</div>
+            <div>
+              <div id="wl-club-name" class="mini-title" style="font-size: 0.95rem;">SportConnect Native</div>
+              <div id="wl-club-sub" class="mini-sub">Default Enterprise Theme</div>
+            </div>
+          </div>
+          <span class="wl-pill-cta">Member App Live</span>
+        </div>
+      </div>
+
+      <!-- Executive Control Panel Highlight -->
+      <div class="exec-panel">
+        <div class="exec-copy">
+          <div class="kicker-pill">Zero-Trust Infrastructure</div>
+          <h3 style="font-size: clamp(1.5rem, 4.5vw, 2rem);">
+            Executive Control Panel
+            <span class="exec-subtitle-tag">(for large clubs and enterprises)</span>
+          </h3>
+          <p class="product-desc" style="font-size: 0.92rem;">
+            A stark, high-density neo-bank interface giving leadership single-pane-of-glass visibility across all 6 apps — monitoring global membership scaling, Police &amp; Garda vetting rates, regional data residency, and RBAC security exceptions.
+          </p>
+          <div>
+            <button type="button" class="btn btn-primary" data-jump-tab="access">Request Executive Demo</button>
+          </div>
+        </div>
+
+        <div class="telemetry-shell">
+          <div class="telemetry-header">
+            <span>System Telemetry</span>
+            <span class="live-pill"><span class="kicker-dot" style="width: 6px; height: 6px;"></span> Live</span>
+          </div>
+
+          <div class="telemetry-grid">
+            <div class="telemetry-card">
+              <div class="telemetry-card-label">Police &amp; Garda Vetting</div>
+              <div class="telemetry-card-val tabular-nums">98.4% <span class="telemetry-delta">↑ 1.2%</span></div>
+            </div>
+            <div class="telemetry-card">
+              <div class="telemetry-card-label">Data Residency</div>
+              <div class="telemetry-card-val">EU-West-1</div>
+            </div>
+            <div class="telemetry-card">
+              <div class="telemetry-card-label">Unified SSO Users</div>
+              <div class="telemetry-card-val tabular-nums">14,820</div>
+            </div>
+            <div class="telemetry-card">
+              <div class="telemetry-card-label">Active Modules</div>
+              <div class="telemetry-card-val tabular-nums">6 / 6 Online</div>
+            </div>
+          </div>
+
+          <div class="rbac-bar">
+            <div>
+              <div class="mini-title">RBAC Security Exceptions</div>
+              <div class="mini-sub">Zero-trust automated audit log</div>
+            </div>
+            <button type="button" id="rbac-review-btn" class="rbac-btn" aria-expanded="false">Review (2)</button>
+          </div>
+
+          <div id="rbac-drawer" class="rbac-drawer">
+            <div class="rbac-row">
+              <span><strong>U16 Assistant Coach</strong> — Vetting expires in 12d</span>
+              <span class="mini-badge mini-badge--amber">Auto-Notified</span>
+            </div>
+            <div class="rbac-row">
+              <span><strong>Guest Scout Profile</strong> — Cross-region read blocked</span>
+              <span class="mini-badge mini-badge--rose">Blocked</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         TAB 4: FUTURE EXPANSION ROADMAP
+         ================================================================ -->
+    <section id="section-roadmap" class="main-section" hidden>
+      <div class="section-header">
+        <div class="kicker-pill">Shared Core • Rapid Vertical Spin-Ups</div>
+        <h2 class="section-title">Expansion <span class="gradient-text">Roadmap</span></h2>
+        <p class="section-subtitle">
+          Because identity (SSO), compliance (Safeguard), and billing infrastructure are shared across the platform, SportConnect rapidly launches high-margin vertical micro-apps for new sporting markets.
+        </p>
+      </div>
+
+      <!-- Delivery Phases -->
+      <div class="phase-timeline">
+        <article class="phase-card is-current">
+          <span class="phase-badge">Phase 1 • Foundation</span>
+          <h3>Core Field &amp; Club Suite</h3>
+          <ul class="feature-list">
+            <li>Match Day &amp; Tactics + Academy Management</li>
+            <li>Personal Training + Advanced Recovery</li>
+            <li>Unified SSO &amp; Mobile-First Design System</li>
+          </ul>
+        </article>
+
+        <article class="phase-card">
+          <span class="phase-badge">Phase 2 • Enterprise</span>
+          <h3>Compliance, Events &amp; AI</h3>
+          <ul class="feature-list">
+            <li>Safeguard Compliance (Police &amp; Garda Vetting)</li>
+            <li>Triathlon Planner &amp; Rapid First Aid Dispatch</li>
+            <li>Executive Control Panel &amp; Agentic Tactical AI</li>
+          </ul>
+        </article>
+
+        <article class="phase-card">
+          <span class="phase-badge">Phase 3 • Multi-Sport Scale</span>
+          <h3>New Vertical Markets</h3>
+          <ul class="feature-list">
+            <li>100% White-Label Federation Rollouts</li>
+            <li>Integrated Sponsor Ad Engine &amp; Native Fees</li>
+            <li>Racket, Combat, Field &amp; Corporate Wellness Apps</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- Future Verticals from Section 6 of Business Plan -->
+      <div class="block-heading">
+        <div>
+          <h2>Upcoming Sport Verticals</h2>
+          <p class="footer-meta">Powered by shared SSO, Safeguard compliance, and automated billing</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon-badge icon-badge--emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6c2.8 2.8 2.8 10 0 12.8M18.4 5.6c-2.8 2.8-2.8 10 0 12.8"/></svg>
+          </div>
+          <h3>Racket Sports</h3>
+          <p><strong>Tennis &amp; Padel:</strong> Instant court booking, automated club ladder leagues, match score verification, and shot/rally analytics.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon-badge icon-badge--amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3>Field &amp; Combat Sports</h3>
+          <p><strong>Hockey &amp; Boxing:</strong> High-tempo rolling substitution tracking for hockey, plus programmable round timers, sparring logs, and safe weight-cut tracking for boxing.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon-badge icon-badge--sky">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+          </div>
+          <h3>Corporate Wellness</h3>
+          <p><strong>Executive PT Health:</strong> Bespoke biometric readiness, stress &amp; sleep telemetry, and private executive performance coaching for corporate teams.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         TAB 5: EARLY ACCESS & DEMO REQUEST (NETLIFY FORMS READY)
+         ================================================================ -->
+    <section id="section-access" class="main-section" hidden>
+      <div class="section-header">
+        <div class="kicker-pill">Partner &amp; Pilot Program</div>
+        <h2 class="section-title">Request <span class="gradient-text">Early Access</span></h2>
+        <p class="section-subtitle">
+          Launching soon for pilot clubs, personal trainers, endurance event organizers, and strategic partners. Tell us what you run and we'll set up a tailored demo.
+        </p>
+      </div>
+
+      <div class="form-card">
+        <form id="early-access-form" name="early-access" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="early-access">
+          <p class="sr-only">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </p>
+
+          <div class="form-grid form-grid--2">
+            <div class="field">
+              <label for="ea-name">Full Name *</label>
+              <input id="ea-name" name="name" type="text" required autocomplete="name" placeholder="Alex Murphy">
+            </div>
+
+            <div class="field">
+              <label for="ea-email">Work or Club Email *</label>
+              <input id="ea-email" name="email" type="email" required autocomplete="email" placeholder="alex@club.com">
+            </div>
+
+            <div class="field">
+              <label for="ea-org">Club / Organization</label>
+              <input id="ea-org" name="organization" type="text" autocomplete="organization" placeholder="e.g. Emerald Rovers FC">
+            </div>
+
+            <div class="field">
+              <label for="ea-role">Your Role *</label>
+              <select id="ea-role" name="role" required>
+                <option value="">Select your role...</option>
+                <option value="Club Executive / Secretary">Club Executive / Secretary</option>
+                <option value="Coach / Tactician">Coach / Tactician</option>
+                <option value="Personal Trainer">Personal Trainer</option>
+                <option value="Race / Event Director">Race / Event Director</option>
+                <option value="Sports Scientist / Athlete">Sports Scientist / Athlete</option>
+                <option value="Investor / Partner">Investor / Partner</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top: 1rem;">
+            <label>Apps &amp; Capabilities of Interest</label>
+            <div class="interest-chips">
+              <label class="interest-chip"><input type="checkbox" name="interest" value="Match Day"><span>Match Day</span></label>
+              <label class="interest-chip"><input type="checkbox" name="interest" value="Personal Training"><span>Personal Training</span></label>
+              <label class="interest-chip"><input type="checkbox" name="interest" value="Triathlon"><span>Triathlon</span></label>
+              <label class="interest-chip"><input type="checkbox" name="interest" value="Academy"><span>Academy</span></label>
+              <label class="interest-chip"><input type="checkbox" name="interest" value="Safeguard"><span>Safeguard</span></label>
+              <label class="interest-chip"><input type="checkbox" name="interest" value="Recovery"><span>Recovery</span></label>
+              <label class="interest-chip"><input type="checkbox" name="interest" value="White-Label Enterprise"><span>White-Label Enterprise</span></label>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top: 1rem;">
+            <label for="ea-notes">Tell us about your team or goals</label>
+            <textarea id="ea-notes" name="notes" placeholder="Number of teams/members, sport(s), or white-label requirements..."></textarea>
+          </div>
+
+          <div style="margin-top: 1.25rem;">
+            <button type="submit" id="form-submit-btn" class="btn btn-primary" style="width: 100%;">
+              Join Pilot Waitlist &amp; Request Demo
+            </button>
+          </div>
+
+          <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>
+        <div class="brand-wordmark" style="font-size: 1.1rem;">Sport<span>Connect</span></div>
+        <p class="footer-meta" style="margin-top: 0.25rem;">Modular sports-technology architecture. Built mobile-first for the global sports ecosystem.</p>
+      </div>
+      <div class="footer-links">
+        <button type="button" data-jump-tab="home">Overview</button>
+        <button type="button" data-jump-tab="products" data-jump-product="match">Apps</button>
+        <button type="button" data-jump-tab="commercial">Commercial</button>
+        <button type="button" data-jump-tab="roadmap">Roadmap</button>
+        <button type="button" data-jump-tab="access">Early Access</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= PERSISTENT MOBILE BOTTOM TAB BAR ================= -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile bottom navigation">
+    <button type="button" class="bottom-nav-btn is-active" data-nav-tab="home" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Home</span>
+    </button>
+    <button type="button" class="bottom-nav-btn" data-nav-tab="products">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      <span>Apps</span>
+    </button>
+    <button type="button" class="bottom-nav-btn" data-nav-tab="commercial">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+      <span>Business</span>
+    </button>
+    <button type="button" class="bottom-nav-btn" data-nav-tab="roadmap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
+      <span>Roadmap</span>
+    </button>
+    <button type="button" class="bottom-nav-btn" data-nav-tab="access">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      <span>Access</span>
+    </button>
+  </nav>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>

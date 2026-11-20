@@ -1,0 +1,17 @@
+{
+  "name": "SportConnect — Modular Sports Platform",
+  "short_name": "SportConnect",
+  "description": "Lightweight, hyper-focused sports applications unified under one white-labeled enterprise architecture.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#050911",
+  "theme_color": "#050911",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
